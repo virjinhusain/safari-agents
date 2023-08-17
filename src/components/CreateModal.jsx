@@ -68,73 +68,11 @@ export default function CreateModal({ isOpen, setIsOpen }) {
               <span className="sr-only">Close modal</span>
             </button>
           </div>
-          <form action="#">
+          <htmlForm action="#">
             <div className="grid gap-4 mb-4 sm:grid-cols-2">
-              {/* <div>
-                <label
-                  for="name"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Name
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  id="name"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  placeholder="Type product name"
-                  required=""
-                />
-              </div> */}
-              {/* <div>
-                <label
-                  for="brand"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Brand
-                </label>
-                <input
-                  type="text"
-                  name="brand"
-                  id="brand"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  placeholder="Product brand"
-                  required=""
-                />
-              </div> */}
-              {/* <div>
-                <label
-                  for="price"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Price
-                </label>
-                <input
-                  type="number"
-                  name="price"
-                  id="price"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  placeholder="$2999"
-                  required=""
-                />
-              </div> */}
-              {/* <div className="sm:col-span-2">
-                <label
-                  for="description"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Description
-                </label>
-                <textarea
-                  id="description"
-                  rows="4"
-                  className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  placeholder="Write product description here"
-                ></textarea>
-              </div> */}
               <div>
                 <label
-                  for="tag-region"
+                  htmlFor="tag-region"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Tag Region
@@ -152,7 +90,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
               </div>
               <div>
                 <label
-                  for="travel-agent"
+                  htmlFor="travel-agent"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Travel Agent
@@ -168,7 +106,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
               </div>
               <div>
                 <label
-                  for="show"
+                  htmlFor="show"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Show
@@ -184,7 +122,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
               </div>
               <div>
                 <label
-                  for="website"
+                  htmlFor="website"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Website
@@ -200,7 +138,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
               </div>
               <div>
                 <label
-                  for="email"
+                  htmlFor="email"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Email
@@ -216,7 +154,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
               </div>
               <div>
                 <label
-                  for="resort"
+                  htmlFor="resort"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Resort Published On Agent Website
@@ -232,7 +170,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
               </div>
               <div>
                 <label
-                  for="sales"
+                  htmlFor="sales"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Sales by Safari
@@ -248,7 +186,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
               </div>
               <div>
                 <label
-                  for="product"
+                  htmlFor="product"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   {/* eslint-disable-next-line react/no-unescaped-entities */}
@@ -265,7 +203,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
               </div>
               <div>
                 <label
-                  for="2022"
+                  htmlFor="2022"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Gross sale 2022
@@ -281,7 +219,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
               </div>
               <div>
                 <label
-                  for="2023"
+                  htmlFor="2023"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Gross sale 2023
@@ -299,7 +237,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
             <div className="space-y-2">
               <div>
                 <label
-                  for="follow-up"
+                  htmlFor="follow-up"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Follow up
@@ -315,7 +253,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
               </div>
               <div className="sm:col-span-2">
                 <label
-                  for="notes"
+                  htmlFor="notes"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Notes
@@ -331,7 +269,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
             <div className="space-y-2 mt-5">
               <div className="space-y-1">
                 <label
-                  for="contact-person"
+                  htmlFor="contact-person"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Contact Person
@@ -357,7 +295,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
               </div>
               <div className="space-y-1">
                 <label
-                  for="phone-number"
+                  htmlFor="phone-number"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Phone Number
@@ -383,7 +321,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
               </div>
               <div className="space-y-1">
                 <label
-                  for="links"
+                  htmlFor="links"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Link
@@ -414,7 +352,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
             >
               Add new agent
             </button>
-          </form>
+          </htmlForm>
         </div>
       </div>
     </div>
