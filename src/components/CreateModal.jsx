@@ -5,6 +5,9 @@ export default function CreateModal({ isOpen, setIsOpen }) {
   const [numContactPersons, setNumContactPersons] = useState(1);
   const [numLinks, setNumLinks] = useState(1);
   const [numPhoneNumber, setNumPhoneNumber] = useState(1);
+  const [numWebsite, setNumWebsite] = useState(1);
+  const [numEmail, setNumEmail] = useState(1);
+  const [numShow, setNumShow] = useState(1);
 
   const contactPersonPlaceholders = Array.from(
     { length: numContactPersons },
@@ -31,6 +34,33 @@ export default function CreateModal({ isOpen, setIsOpen }) {
 
   const addPhoneNumber = () => {
     setNumPhoneNumber(numPhoneNumber + 1);
+  };
+
+  const websitePlaceholders = Array.from(
+    { length: numWebsite },
+    (_, index) => `Website ${index + 1}`
+  );
+
+  const addWebsite = () => {
+    setNumWebsite(numWebsite + 1);
+  };
+
+  const emailPlaceholders = Array.from(
+    { length: numEmail },
+    (_, index) => `Email ${index + 1}`
+  );
+
+  const addEmail = () => {
+    setNumEmail(numEmail + 1);
+  };
+
+  const showPlaceholders = Array.from(
+    { length: numShow },
+    (_, index) => `Show ${index + 1}`
+  );
+
+  const addShow = () => {
+    setNumShow(numShow + 1);
   };
 
   return (
@@ -104,103 +134,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
                   required=""
                 />
               </div>
-              <div>
-                <label
-                  htmlFor="show"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Show
-                </label>
-                <input
-                  type="text"
-                  name="show"
-                  id="show"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  placeholder=""
-                  required=""
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="website"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Website
-                </label>
-                <input
-                  type="text"
-                  name="website"
-                  id="website"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  placeholder="Type website"
-                  required=""
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Email
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  placeholder="Type Email"
-                  required=""
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="resort"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Resort Published On Agent Website
-                </label>
-                <input
-                  type="text"
-                  name="resort"
-                  id="resort"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  placeholder=""
-                  required=""
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="sales"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Sales by Safari
-                </label>
-                <input
-                  type="text"
-                  name="sales"
-                  id="sales"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  placeholder=""
-                  required=""
-                />
-              </div>
-              <div>
-                <label
-                  htmlFor="product"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  {/* eslint-disable-next-line react/no-unescaped-entities */}
-                  Safari's product On their website{" "}
-                </label>
-                <input
-                  type="text"
-                  name="product"
-                  id="product"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  placeholder=""
-                  required=""
-                />
-              </div>
+
               <div>
                 <label
                   htmlFor="2022"
@@ -232,38 +166,6 @@ export default function CreateModal({ isOpen, setIsOpen }) {
                   placeholder=""
                   required=""
                 />
-              </div>
-            </div>
-            <div className="space-y-2">
-              <div>
-                <label
-                  htmlFor="follow-up"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Follow up
-                </label>
-                <input
-                  type="text"
-                  name="follow-up"
-                  id="follow-up"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  placeholder=""
-                  required=""
-                />
-              </div>
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="notes"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Notes
-                </label>
-                <textarea
-                  id="notes"
-                  rows="4"
-                  className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  placeholder="Add notes"
-                ></textarea>
               </div>
             </div>
             <div className="space-y-2 mt-5">
@@ -345,7 +247,158 @@ export default function CreateModal({ isOpen, setIsOpen }) {
                   + Add Link
                 </button>
               </div>
+              <div className="space-y-1">
+                <label
+                  htmlFor="website"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Website
+                </label>
+                {websitePlaceholders.map((placeholder, index) => (
+                  <input
+                    key={index}
+                    type="text"
+                    name={`website-${index}`}
+                    id={`website-${index}`}
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    placeholder={placeholder}
+                    required=""
+                  />
+                ))}
+                <button
+                  type="button"
+                  className="text-gray-400 hover:text-gray-600 text-sm mt-1"
+                  onClick={addWebsite}
+                >
+                  + Add Website
+                </button>
+              </div>
+              <div className="space-y-1">
+                <label
+                  htmlFor="email"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Email
+                </label>
+                {emailPlaceholders.map((placeholder, index) => (
+                  <input
+                    key={index}
+                    type="text"
+                    name={`email-${index}`}
+                    id={`email-${index}`}
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    placeholder={placeholder}
+                    required=""
+                  />
+                ))}
+                <button
+                  type="button"
+                  className="text-gray-400 hover:text-gray-600 text-sm mt-1"
+                  onClick={addEmail}
+                >
+                  + Add Email
+                </button>
+              </div>
+              <div>
+                <label
+                  htmlFor="show"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Show
+                </label>
+                {showPlaceholders.map((placeholder, index) => (
+                  <input
+                    key={index}
+                    type="text"
+                    name={`show-${index}`}
+                    id={`show-${index}`}
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    placeholder={placeholder}
+                    required=""
+                  />
+                ))}
+                <button
+                  type="button"
+                  className="text-gray-400 hover:text-gray-600 text-sm mt-1"
+                  onClick={addShow}
+                >
+                  + Add Show
+                </button>
+              </div>
             </div>
+            <div className="space-y-2">
+              <div className="sm:col-span-2">
+                <label
+                  htmlFor="resortPublished"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Resort published on their website
+                </label>
+                <textarea
+                  id="resortPublished"
+                  rows="4"
+                  className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  placeholder=""
+                ></textarea>
+              </div>
+              <div className="sm:col-span-2">
+                <label
+                  htmlFor="salesBySafari"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Sales by Safari
+                </label>
+                <textarea
+                  id="salesBySafari"
+                  rows="4"
+                  className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  placeholder=""
+                ></textarea>
+              </div>
+              <div className="sm:col-span-2">
+                <label
+                  htmlFor="safariProduct"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Safari product on their website
+                </label>
+                <textarea
+                  id="safariProduct"
+                  rows="4"
+                  className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  placeholder=""
+                ></textarea>
+              </div>
+              <div className="sm:col-span-2">
+                <label
+                  htmlFor="notes"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Notes
+                </label>
+                <textarea
+                  id="notes"
+                  rows="4"
+                  className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  placeholder="Add notes"
+                ></textarea>
+              </div>{" "}
+              <div>
+                <label
+                  htmlFor="follow-up"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Follow up
+                </label>
+                <textarea
+                  id="follow-up"
+                  rows="4"
+                  className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  placeholder=""
+                ></textarea>
+              </div>
+            </div>
+
             <button
               type="submit"
               className="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 mt-5"

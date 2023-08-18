@@ -6,6 +6,8 @@ import CreateModal from "@/components/CreateModal";
 import { useEffect, useState } from "react";
 import ReadModal from "@/components/ReadModal";
 import axios from "axios";
+import UpdateModal from "@/components/UpdateModal";
+import DeleteModal from "@/components/DeleteModal";
 
 export default function Home() {
   const [openCreateModal, setOpenCreateModal] = useState(false);
@@ -36,6 +38,8 @@ export default function Home() {
         isOpen={openReadModal}
         setIsOpen={setOpenReadModal}
       />
+      <UpdateModal />
+      <DeleteModal />
     </section>
   );
 }
