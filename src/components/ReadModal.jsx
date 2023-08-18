@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState, useEffect } from "react";
 
 export default function ReadModal({ data, isOpen, setIsOpen }) {
@@ -54,32 +54,67 @@ export default function ReadModal({ data, isOpen, setIsOpen }) {
               </div>
             </div>
             <div className="flex flex-row">
-              <dl className="grid grid-cols-1 sm:grid-cols-2">
-                <InfoItem title="Contact person" value={virjin.contactPerson} />
-                <InfoItem title="Email" value={virjin.email} />
-                <InfoItem title="Phone number" value={virjin.phoneNumber} />
-                <InfoItem title="Show" value={virjin.show} />
-                <InfoItem title="Website" value={virjin.website} />
-                <InfoItem title="Link" value={virjin.link} />
-              </dl>
-              <dl className="grid grid-cols-1 sm:grid-cols-2">
-                <InfoItem
-                  title="Resort published on agent website"
-                  value={virjin.publishedResort}
-                />
-                <InfoItem
-                  title="Sales by Safari"
-                  value={virjin.salesBySafari}
-                />
-                <InfoItem
-                  title="Safari's product on their website"
-                  value={virjin.safariProduct}
-                />
-                <InfoItem title="Gross sale 2022" value={virjin.sales2022} />
-                <InfoItem title="Gross sale 2023" value={virjin.sales2023} />
-                <InfoItem title="Notes" value={virjin.notes} />
-                <InfoItem title="Follow up" value={virjin.followUp} />
-              </dl>
+              <table className="w-full">
+                <tbody>
+                  <tr>
+                    <InfoItem
+                      title="Contact person"
+                      value={virjin.contactPerson}
+                    />
+                    <InfoItem
+                      title="Resort published on agent website"
+                      value={virjin.publishedResort}
+                    />
+                  </tr>
+                  <tr>
+                    <InfoItem title="Email" value={virjin.email} />
+                    <InfoItem
+                      title="Sales by Safari"
+                      value={virjin.salesBySafari}
+                    />
+                  </tr>
+                </tbody>
+              </table>
+              <table className="w-full">
+                <tbody>
+                  <tr>
+                    <InfoItem title="Phone number" value={virjin.phoneNumber} />
+                    <InfoItem
+                      title="Safari's product on their website"
+                      value={virjin.safariProduct}
+                    />
+                  </tr>
+                  <tr>
+                    <InfoItem title="Show" value={virjin.show} />
+                    <InfoItem
+                      title="Gross sale 2022"
+                      value={virjin.sales2022}
+                    />
+                  </tr>
+                </tbody>
+              </table>
+              <table className="w-full">
+                <tbody>
+                  <tr>
+                    <InfoItem title="Website" value={virjin.website} />
+                    <InfoItem
+                      title="Gross sale 2023"
+                      value={virjin.sales2023}
+                    />
+                  </tr>
+                  <tr>
+                    <InfoItem title="Link" value={virjin.link} />
+                    <InfoItem title="Notes" value={virjin.notes} />
+                  </tr>
+                  <tr>
+                    <InfoItem
+                      title="Sales by Safari"
+                      value={virjin.salesBySafari}
+                    />
+                    <InfoItem title="Follow up" value={virjin.followUp} />
+                  </tr>
+                </tbody>
+              </table>
             </div>
             <div className="flex justify-between items-center mt-6">
               <div className="flex space-x-3 sm:space-x-4"></div>
