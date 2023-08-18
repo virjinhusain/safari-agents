@@ -63,6 +63,28 @@ export default function CreateModal({ isOpen, setIsOpen }) {
     setNumShow(numShow + 1);
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const data = new FormData(e.target);
+
+    const formData = {
+      tagRegion: data.get("tag-region"),
+      travelAgent: data.get("travel-agent"),
+      contactPersons: contactPersonPlaceholders.map((placeholder) =>
+        data.get(placeholder)
+      ),
+      links: linksPlaceholders.map((placeholder) => data.get(placeholder)),
+      phoneNumbers: phoneNumberPlaceholders.map((placeholder) =>
+        data.get(placeholder)
+      ),
+      websites: websitePlaceholders.map((placeholder) => data.get(placeholder)),
+      emails: emailPlaceholders.map((placeholder) => data.get(placeholder)),
+      shows: showPlaceholders.map((placeholder) => data.get(placeholder)),
+    };
+    console.log(formData);
+  };
+
   return (
     <div
       tabIndex="-1"
@@ -98,7 +120,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
               <span className="sr-only">Close modal</span>
             </button>
           </div>
-          <htmlForm action="#">
+          <form onSubmit={handleSubmit}>
             <div className="grid gap-4 mb-4 sm:grid-cols-2">
               <div>
                 <label
@@ -407,7 +429,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
             >
               Add new agent
             </button>
-          </htmlForm>
+          </form>
         </div>
       </div>
     </div>
