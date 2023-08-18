@@ -16,9 +16,11 @@ export default function Home() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:3000/agent").then((res) => {
-      setData(res.data);
-    });
+    axios
+      .get("https://saf-api-rcesi3nzea-as.a.run.app/agent")
+      .then((res) => {
+        setData(res.data);
+      });
   }, [data]);
 
   return (
