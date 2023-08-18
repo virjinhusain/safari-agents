@@ -86,17 +86,17 @@ export default function ReadModal({ data, isOpen, setIsOpen }) {
                   </tr>
                   <tr>
                     <InfoItem title="Show" value={virjin.show} />
-                    <InfoItem
-                      title="Gross sale 2022"
-                      value={virjin.sales2022}
-                    />
+                    <InfoItem title="Website" value={virjin.website} />
                   </tr>
                 </tbody>
               </table>
               <table className="w-full">
                 <tbody>
                   <tr>
-                    <InfoItem title="Website" value={virjin.website} />
+                    <InfoItem
+                      title="Gross sale 2022"
+                      value={virjin.sales2022}
+                    />
                     <InfoItem
                       title="Gross sale 2023"
                       value={virjin.sales2023}

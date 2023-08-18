@@ -38,7 +38,7 @@ export default function Home() {
         isOpen={openReadModal}
         setIsOpen={setOpenReadModal}
       />
-      <UpdateModal />
+      <UpdateModal isOpen={false} />
       <DeleteModal />
     </section>
   );
