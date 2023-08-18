@@ -169,6 +169,32 @@ export default function CreateModal({ isOpen, setIsOpen }) {
               </div>
             </div>
             <div className="space-y-2 mt-5">
+              <div>
+                <label
+                  htmlFor="show"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Show
+                </label>
+                {showPlaceholders.map((placeholder, index) => (
+                  <input
+                    key={index}
+                    type="text"
+                    name={`show-${index}`}
+                    id={`show-${index}`}
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    placeholder={placeholder}
+                    required=""
+                  />
+                ))}
+                <button
+                  type="button"
+                  className="text-gray-400 hover:text-gray-600 text-sm mt-1"
+                  onClick={addShow}
+                >
+                  + Add Show
+                </button>
+              </div>
               <div className="space-y-1">
                 <label
                   htmlFor="contact-person"
@@ -223,17 +249,17 @@ export default function CreateModal({ isOpen, setIsOpen }) {
               </div>
               <div className="space-y-1">
                 <label
-                  htmlFor="links"
+                  htmlFor="email"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
-                  Link
+                  Email
                 </label>
-                {linksPlaceholders.map((placeholder, index) => (
+                {emailPlaceholders.map((placeholder, index) => (
                   <input
                     key={index}
                     type="text"
-                    name={`link-${index}`}
-                    id={`link-${index}`}
+                    name={`email-${index}`}
+                    id={`email-${index}`}
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder={placeholder}
                     required=""
@@ -242,9 +268,9 @@ export default function CreateModal({ isOpen, setIsOpen }) {
                 <button
                   type="button"
                   className="text-gray-400 hover:text-gray-600 text-sm mt-1"
-                  onClick={addLink}
+                  onClick={addEmail}
                 >
-                  + Add Link
+                  + Add Email
                 </button>
               </div>
               <div className="space-y-1">
@@ -273,19 +299,20 @@ export default function CreateModal({ isOpen, setIsOpen }) {
                   + Add Website
                 </button>
               </div>
+
               <div className="space-y-1">
                 <label
-                  htmlFor="email"
+                  htmlFor="links"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
-                  Email
+                  Link
                 </label>
-                {emailPlaceholders.map((placeholder, index) => (
+                {linksPlaceholders.map((placeholder, index) => (
                   <input
                     key={index}
                     type="text"
-                    name={`email-${index}`}
-                    id={`email-${index}`}
+                    name={`link-${index}`}
+                    id={`link-${index}`}
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder={placeholder}
                     required=""
@@ -294,38 +321,13 @@ export default function CreateModal({ isOpen, setIsOpen }) {
                 <button
                   type="button"
                   className="text-gray-400 hover:text-gray-600 text-sm mt-1"
-                  onClick={addEmail}
+                  onClick={addLink}
                 >
-                  + Add Email
-                </button>
-              </div>
-              <div>
-                <label
-                  htmlFor="show"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Show
-                </label>
-                {showPlaceholders.map((placeholder, index) => (
-                  <input
-                    key={index}
-                    type="text"
-                    name={`show-${index}`}
-                    id={`show-${index}`}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                    placeholder={placeholder}
-                    required=""
-                  />
-                ))}
-                <button
-                  type="button"
-                  className="text-gray-400 hover:text-gray-600 text-sm mt-1"
-                  onClick={addShow}
-                >
-                  + Add Show
+                  + Add Link
                 </button>
               </div>
             </div>
+
             <div className="space-y-2">
               <div className="sm:col-span-2">
                 <label
