@@ -1,7 +1,13 @@
 "use client";
 import { useState } from "react";
+import DeleteModal from "./DeleteModal";
 
-export default function TableContainer({ data, setData, setOpenReadModal }) {
+export default function TableContainer({
+  data,
+  setData,
+  setOpenReadModal,
+  setOpenDeleteModal,
+}) {
   return (
     <>
       <table className="w-full text-xs text-left text-gray-500 dark:text-gray-400">
@@ -28,6 +34,7 @@ export default function TableContainer({ data, setData, setOpenReadModal }) {
                 data={row}
                 setData={setData}
                 setOpenReadModal={setOpenReadModal}
+                setOpenDeleteModal={setOpenDeleteModal}
               />
             </TableRow>
           ))}
@@ -57,7 +64,12 @@ function ActionsTableHeaderCell() {
   );
 }
 
-function ActionsTableCell({ data, setData, setOpenReadModal }) {
+function ActionsTableCell({
+  data,
+  setData,
+  setOpenReadModal,
+  setOpenDeleteModal,
+}) {
   const [showActions, setShowActions] = useState(false);
 
   return (
@@ -65,7 +77,10 @@ function ActionsTableCell({ data, setData, setOpenReadModal }) {
       <button
         className="text-gray-500 hover:text-gray-800 focus:outline-none"
         type="button"
-        onClick={() => setShowActions(!showActions)}
+        onClick={() => {
+          setShowActions(!showActions);
+          setData(data);
+        }}
       >
         <i className="fas fa-ellipsis-v"></i>
       </button>
@@ -86,7 +101,6 @@ function ActionsTableCell({ data, setData, setOpenReadModal }) {
                 type="button"
                 className="flex w-full items-center py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-gray-700 dark:text-gray-200"
                 onClick={() => {
-                  setData(data);
                   setOpenReadModal(true);
                 }}
               >
@@ -98,6 +112,7 @@ function ActionsTableCell({ data, setData, setOpenReadModal }) {
               <button
                 type="button"
                 className="flex w-full items-center py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 text-red-500 dark:hover:text-red-400"
+                onClick={() => setOpenDeleteModal(true)}
               >
                 <i className="fas fa-trash-alt mr-2"></i>
                 Delete

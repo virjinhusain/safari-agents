@@ -12,15 +12,15 @@ import DeleteModal from "@/components/DeleteModal";
 export default function Home() {
   const [openCreateModal, setOpenCreateModal] = useState(false);
   const [openReadModal, setOpenReadModal] = useState(false);
+  const [openDeleteModal, setOpenDeleteModal] = useState(false);
+
   const [selectedData, setSelectedData] = useState(null);
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("https://saf-api-rcesi3nzea-as.a.run.app/agent")
-      .then((res) => {
-        setData(res.data);
-      });
+    axios.get("https://saf-api-rcesi3nzea-as.a.run.app/agent").then((res) => {
+      setData(res.data);
+    });
   }, [data]);
 
   return (
@@ -31,6 +31,7 @@ export default function Home() {
           data={data}
           setData={setSelectedData}
           setOpenReadModal={setOpenReadModal}
+          setOpenDeleteModal={setOpenDeleteModal}
         />
         <Navigation />
       </div>
@@ -41,7 +42,11 @@ export default function Home() {
         setIsOpen={setOpenReadModal}
       />
       <UpdateModal isOpen={false} />
-      <DeleteModal />
+      <DeleteModal
+        data={selectedData}
+        isOpen={openDeleteModal}
+        setIsOpen={setOpenDeleteModal}
+      />
     </section>
   );
 }
