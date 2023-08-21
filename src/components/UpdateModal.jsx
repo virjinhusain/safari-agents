@@ -2,7 +2,7 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
   return (
     <div
       id="updateProductModal"
-      tabindex="-1"
+      tabIndex="-1"
       aria-hidden="true"
       className={`fixed inset-0 z-50 flex items-center justify-center overflow-y-auto overflow-x-hidden bg-opacity-75 bg-black ${
         isOpen ? "" : "hidden"

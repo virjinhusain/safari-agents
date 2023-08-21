@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import axios from "axios";
 
 export default function CreateModal({ isOpen, setIsOpen }) {
   const [numContactPersons, setNumContactPersons] = useState(1);
@@ -62,27 +63,33 @@ export default function CreateModal({ isOpen, setIsOpen }) {
   const addShow = () => {
     setNumShow(numShow + 1);
   };
+  const [formData, setFormData] = useState({
+    tagRegion: "",
+    travelAgent: "",
+    sales2022: "",
+    sales2023: "",
+    show: [],
+    contactPerson: [],
+    phoneNumber: [],
+    email: [],
+    website: [],
+    link: [],
+    publishedResort: "",
+    salesBySafari: "",
+    safariProduct: "",
+    notes: "",
+    followUp: "",
+  });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const data = new FormData(e.target);
-
-    const formData = {
-      tagRegion: data.get("tag-region"),
-      travelAgent: data.get("travel-agent"),
-      contactPersons: contactPersonPlaceholders.map((placeholder) =>
-        data.get(placeholder)
-      ),
-      links: linksPlaceholders.map((placeholder) => data.get(placeholder)),
-      phoneNumbers: phoneNumberPlaceholders.map((placeholder) =>
-        data.get(placeholder)
-      ),
-      websites: websitePlaceholders.map((placeholder) => data.get(placeholder)),
-      emails: emailPlaceholders.map((placeholder) => data.get(placeholder)),
-      shows: showPlaceholders.map((placeholder) => data.get(placeholder)),
-    };
-    console.log(formData);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Here you can process and send the formData to your backend or perform any necessary actions
+    axios
+      .post("https://saf-api-rcesi3nzea-as.a.run.app/agent", formData)
+      .then(() => {
+        setIsOpen(false);
+      });
+    // After processing the data, you can close the modal
   };
 
   return (
@@ -132,12 +139,18 @@ export default function CreateModal({ isOpen, setIsOpen }) {
                 <select
                   id="tag-region"
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  value={formData.tagRegion}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      tagRegion: e.target.value,
+                    })
+                  }
                 >
-                  <option selected="">A</option>
-                  <option value="A">B</option>
-                  <option value="B">C</option>
-                  <option value="C">D</option>
-                  <option value="D">D</option>
+                  <option selected="">Select region</option>
+                  <option value="ASIA">ASIA</option>
+                  <option value="EUROPE">EUROPE</option>
+                  <option value="USA">USA</option>
                 </select>
               </div>
               <div>
@@ -154,6 +167,13 @@ export default function CreateModal({ isOpen, setIsOpen }) {
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   placeholder="Type travel agent"
                   required=""
+                  value={formData.travelAgent}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      travelAgent: e.target.value,
+                    })
+                  }
                 />
               </div>
 
@@ -171,6 +191,13 @@ export default function CreateModal({ isOpen, setIsOpen }) {
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   placeholder=""
                   required=""
+                  value={formData.sales2022}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      sales2022: e.target.value,
+                    })
+                  }
                 />
               </div>
               <div>
@@ -187,6 +214,13 @@ export default function CreateModal({ isOpen, setIsOpen }) {
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   placeholder=""
                   required=""
+                  value={formData.sales2023}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      sales2023: e.target.value,
+                    })
+                  }
                 />
               </div>
             </div>
@@ -207,6 +241,15 @@ export default function CreateModal({ isOpen, setIsOpen }) {
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder={placeholder}
                     required=""
+                    value={formData.show[index] || ""} // Set value from formData
+                    onChange={(e) => {
+                      const updatedShow = [...formData.show];
+                      updatedShow[index] = e.target.value;
+                      setFormData({
+                        ...formData,
+                        show: updatedShow,
+                      });
+                    }}
                   />
                 ))}
                 <button
@@ -233,6 +276,15 @@ export default function CreateModal({ isOpen, setIsOpen }) {
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder={placeholder}
                     required=""
+                    value={formData.contactPerson[index] || ""} // Set value from formData
+                    onChange={(e) => {
+                      const updatedContactPersons = [...formData.contactPerson];
+                      updatedContactPersons[index] = e.target.value;
+                      setFormData({
+                        ...formData,
+                        contactPerson: updatedContactPersons,
+                      });
+                    }}
                   />
                 ))}
                 <button
@@ -259,6 +311,15 @@ export default function CreateModal({ isOpen, setIsOpen }) {
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder={placeholder}
                     required=""
+                    value={formData.phoneNumber[index] || ""} // Set value from formData
+                    onChange={(e) => {
+                      const updatedPhoneNumbers = [...formData.phoneNumber]; // Corrected variable name
+                      updatedPhoneNumbers[index] = e.target.value;
+                      setFormData({
+                        ...formData,
+                        phoneNumber: updatedPhoneNumbers, // Corrected field name
+                      });
+                    }}
                   />
                 ))}
                 <button
@@ -269,6 +330,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
                   + Add Phone Number
                 </button>
               </div>
+
               <div className="space-y-1">
                 <label
                   htmlFor="email"
@@ -285,6 +347,15 @@ export default function CreateModal({ isOpen, setIsOpen }) {
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder={placeholder}
                     required=""
+                    value={formData.email[index] || ""} // Set value from formData
+                    onChange={(e) => {
+                      const updatedEmail = [...formData.email];
+                      updatedEmail[index] = e.target.value;
+                      setFormData({
+                        ...formData,
+                        email: updatedEmail,
+                      });
+                    }}
                   />
                 ))}
                 <button
@@ -311,6 +382,15 @@ export default function CreateModal({ isOpen, setIsOpen }) {
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder={placeholder}
                     required=""
+                    value={formData.website[index] || ""} // Set value from formData
+                    onChange={(e) => {
+                      const updatedWebsites = [...formData.website];
+                      updatedWebsites[index] = e.target.value;
+                      setFormData({
+                        ...formData,
+                        website: updatedWebsites,
+                      });
+                    }}
                   />
                 ))}
                 <button
@@ -338,31 +418,46 @@ export default function CreateModal({ isOpen, setIsOpen }) {
                     className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder={placeholder}
                     required=""
+                    value={formData.link[index] || ""} // Set value from formData
+                    onChange={(e) => {
+                      const updatedLinks = [...formData.link];
+                      updatedLinks[index] = e.target.value;
+                      setFormData({
+                        ...formData,
+                        link: updatedLinks,
+                      });
+                    }}
                   />
                 ))}
                 <button
                   type="button"
                   className="text-gray-400 hover:text-gray-600 text-sm mt-1"
-                  onClick={addLink}
+                  onClick={addLink} // You need to define the addLink function to add new links to formData.links
                 >
                   + Add Link
                 </button>
               </div>
             </div>
-
             <div className="space-y-2">
               <div className="sm:col-span-2">
                 <label
-                  htmlFor="resortPublished"
+                  htmlFor="publishedResort"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Resort published on their website
                 </label>
                 <textarea
-                  id="resortPublished"
+                  id="publishedResort"
                   rows="4"
-                  className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  className="block p-2.5 h-64 w-full text-md text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   placeholder=""
+                  value={formData.publishedResort}
+                  onChange={(e) => {
+                    setFormData({
+                      ...formData,
+                      publishedResort: e.target.value,
+                    });
+                  }}
                 ></textarea>
               </div>
               <div className="sm:col-span-2">
@@ -375,8 +470,12 @@ export default function CreateModal({ isOpen, setIsOpen }) {
                 <textarea
                   id="salesBySafari"
                   rows="4"
-                  className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  className="block p-2.5 h-64 w-full text-md text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   placeholder=""
+                  value={formData.salesBySafari}
+                  onChange={(e) => {
+                    setFormData({ ...formData, salesBySafari: e.target.value });
+                  }}
                 ></textarea>
               </div>
               <div className="sm:col-span-2">
@@ -389,8 +488,12 @@ export default function CreateModal({ isOpen, setIsOpen }) {
                 <textarea
                   id="safariProduct"
                   rows="4"
-                  className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  className="block p-2.5 h-64 w-full text-md text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   placeholder=""
+                  value={formData.safariProduct}
+                  onChange={(e) =>
+                    setFormData({ ...formData, safariProduct: e.target.value })
+                  }
                 ></textarea>
               </div>
               <div className="sm:col-span-2">
@@ -403,8 +506,12 @@ export default function CreateModal({ isOpen, setIsOpen }) {
                 <textarea
                   id="notes"
                   rows="4"
-                  className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  className="block p-2.5 h-64 w-full text-md text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   placeholder="Add notes"
+                  value={formData.notes}
+                  onChange={(e) =>
+                    setFormData({ ...formData, notes: e.target.value })
+                  }
                 ></textarea>
               </div>{" "}
               <div>
@@ -417,8 +524,12 @@ export default function CreateModal({ isOpen, setIsOpen }) {
                 <textarea
                   id="follow-up"
                   rows="4"
-                  className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  className="block p-2.5 h-64 w-full text-md text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   placeholder=""
+                  value={formData.followUp}
+                  onChange={(e) =>
+                    setFormData({ ...formData, followUp: e.target.value })
+                  }
                 ></textarea>
               </div>
             </div>
@@ -435,3 +546,4 @@ export default function CreateModal({ isOpen, setIsOpen }) {
     </div>
   );
 }
+
