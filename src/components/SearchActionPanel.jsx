@@ -1,4 +1,16 @@
-export default function Panel({ setCreateAgentModal, setFilterModal }) {
+"use client"
+import { useState } from "react";
+
+export default function Panel({ setCreateAgentModal, onSearchChange }) {
+  const [searchQuery, setSearchQuery] = useState(""); // State to store the search query
+
+  // Function to handle changes in the search input
+  const handleSearchChange = (event) => {
+    const query = event.target.value;
+    setSearchQuery(query);
+    onSearchChange(query); // Pass the search query to the parent component
+  };
+
   return (
     <div className="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
       <div className="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
@@ -15,8 +27,10 @@ export default function Panel({ setCreateAgentModal, setFilterModal }) {
                 type="text"
                 id="simple-search"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                placeholder="Search"
+                placeholder="Search Travel Agent"
                 required=""
+                value={searchQuery} // Bind the input value to the searchQuery state
+                onChange={handleSearchChange} // Handle changes in the search input
               />
             </div>
           </form>

@@ -105,7 +105,7 @@ function ActionsTableHeaderCell() {
 
 function ActionsTableCell({ data, setData, setOpenDeleteModal }) {
   return (
-    <td className="px-4 py-3 relative text-right">
+    <div className="flex flex-row justify-center items-center">
       <button
         type="button"
         className="flex w-full items-center py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-gray-700 dark:text-gray-200"
@@ -124,6 +124,6 @@ function ActionsTableCell({ data, setData, setOpenDeleteModal }) {
         <i className="fas fa-trash-alt mr-2"></i>
         Delete
       </button>
-    </td>
+    </div>
   );
 }
