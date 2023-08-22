@@ -39,7 +39,7 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
             <div className="grid gap-4 mb-4 sm:grid-cols-2">
               <div>
                 <label
-                  for="name"
+                  htmlFor="name"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Name
@@ -55,7 +55,7 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
               </div>
               <div>
                 <label
-                  for="brand"
+                  htmlFor="brand"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Brand
@@ -71,7 +71,7 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
               </div>
               <div>
                 <label
-                  for="price"
+                  htmlFor="price"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Price
@@ -87,7 +87,7 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
               </div>
               <div>
                 <label
-                  for="category"
+                  htmlFor="category"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Category
@@ -105,7 +105,7 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
               </div>
               <div className="sm:col-span-2">
                 <label
-                  for="description"
+                  htmlFor="description"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
                   Description

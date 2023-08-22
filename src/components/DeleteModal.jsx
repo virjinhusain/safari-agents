@@ -15,7 +15,6 @@ export default function DeleteModal({ isOpen, setIsOpen, data }) {
     axios
       .delete(`https://saf-api-rcesi3nzea-as.a.run.app/agent/${id}`)
       .then((res) => {
-        console.log(res);
         setIsOpen(false);
       });
   };

@@ -35,7 +35,7 @@ export default function Home() {
         />
         <Navigation />
       </div>
-      <CreateModal isOpen={openCreateModal} setIsOpen={setOpenCreateModal} />
+      <CreateModal isOpen={openCreateModal} setIsOpen={setOpenCreateModal} /> 
       <ReadModal
         data={selectedData}
         isOpen={openReadModal}
