@@ -6,6 +6,7 @@ export default function TableContainer({
   data,
   setData,
   setOpenReadModal,
+  setOpenUpdateModal,
   setOpenDeleteModal,
 }) {
   return (
@@ -63,6 +64,7 @@ export default function TableContainer({
               <ActionsTableCell
                 data={row}
                 setData={setData}
+                setOpenUpdateModal={setOpenUpdateModal}
                 setOpenDeleteModal={setOpenDeleteModal}
               />
             </TableRow>
@@ -103,12 +105,21 @@ function ActionsTableHeaderCell() {
   );
 }
 
-function ActionsTableCell({ data, setData, setOpenDeleteModal }) {
+function ActionsTableCell({
+  data,
+  setData,
+  setOpenUpdateModal,
+  setOpenDeleteModal,
+}) {
   return (
     <div className="flex flex-row justify-center items-center">
       <button
         type="button"
         className="flex w-full items-center py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-gray-700 dark:text-gray-200"
+        onClick={() => {
+          setData(data);
+          setOpenUpdateModal(true);
+        }}
       >
         <i className="fas fa-edit mr-2"></i>
         Edit
