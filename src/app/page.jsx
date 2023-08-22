@@ -51,7 +51,7 @@ export default function Home() {
   };
 
   return (
-    <section className="bg-gray-50 dark:bg-gray-900 h-screen p-3 sm:p-5 antialiased">
+    <section className="bg-gray-50 dark:bg-gray-900 h-full p-3 sm:p-5 antialiased">
       <div className="space-y-1">
         <Panel
           setCreateAgentModal={setOpenCreateModal}
