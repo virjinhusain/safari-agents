@@ -1,14 +1,19 @@
-"use client"
+"use client";
 import { useState } from "react";
 
 export default function Panel({ setCreateAgentModal, onSearchChange }) {
   const [searchQuery, setSearchQuery] = useState(""); // State to store the search query
+  const [isFilterDropdownOpen, setIsFilterDropdownOpen] = useState(false); // State to control filter dropdown visibility
 
   // Function to handle changes in the search input
   const handleSearchChange = (event) => {
     const query = event.target.value;
     setSearchQuery(query);
     onSearchChange(query); // Pass the search query to the parent component
+  };
+
+  const toggleFilterDropdown = () => {
+    setIsFilterDropdownOpen(!isFilterDropdownOpen);
   };
 
   return (
@@ -47,13 +52,105 @@ export default function Panel({ setCreateAgentModal, onSearchChange }) {
           <button
             type="button"
             id="filterButton"
+            onClick={toggleFilterDropdown} // Toggle the filter dropdown
             className="flex items-center justify-center text-gray-500 bg-gray-300 hover:bg-gray-400 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-xs px-4 py-2 gap-2"
           >
             <i className="fa-solid fa-filter"></i>
             Filter
           </button>
+          {isFilterDropdownOpen && <FilterDropdown />}{" "}
+          {/* Render the filter dropdown conditionally */}
         </div>
       </div>
+    </div>
+  );
+}
+
+function FilterDropdown() {
+  const showList = [
+    "INTERDIVE",
+    "FESPO",
+    " UK GO DIVE",
+    "DEMA",
+    "IT BERLIN",
+    "BBTF",
+    "BOOT",
+    "DEUIKVECTOR",
+  ];
+  return (
+    <div
+      id="filterDropdown"
+      className="z-10 w-56 p-3 bg-white rounded-lg shadow dark:bg-gray-700"
+    >
+      <h6 className="mb-3 text-sm font-medium text-gray-900 dark:text-white">
+        Tag Region
+      </h6>
+      <ul className="space-y-2 text-sm" aria-labelledby="filterDropdownButton">
+        <li className="flex items-center">
+          <input
+            id="asia"
+            type="checkbox"
+            value=""
+            className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+          />
+          <label
+            for="asia"
+            className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+          >
+            ASIA
+          </label>
+        </li>
+        <li className="flex items-center">
+          <input
+            id="europe"
+            type="checkbox"
+            value=""
+            className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+          />
+          <label
+            for="europe"
+            className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+          >
+            EUROPE
+          </label>
+        </li>
+        <li className="flex items-center">
+          <input
+            id="us"
+            type="checkbox"
+            value=""
+            className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+          />
+          <label
+            for="usa"
+            className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+          >
+            USA
+          </label>
+        </li>
+      </ul>
+      <h6 className="mb-3 text-sm font-medium text-gray-900 dark:text-white mt-5">
+        Show
+      </h6>
+      <ul className="space-y-2 text-sm" aria-labelledby="filterDropdownButton">
+        {showList.map((show) => (
+          // eslint-disable-next-line react/jsx-key
+          <li className="flex items-center">
+            <input
+              id={show}
+              type="checkbox"
+              value=""
+              className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+            />
+            <label
+              for={show}
+              className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+            >
+              {show}
+            </label>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }

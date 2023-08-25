@@ -89,7 +89,6 @@ export default function ReadModal({ data, isOpen, setIsOpen }) {
     </div>
   );
 }
-
 function InfoItem({ title, value }) {
   return (
     <tr>

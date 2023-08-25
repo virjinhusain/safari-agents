@@ -54,7 +54,6 @@ export default function Home() {
       <div className="space-y-1">
         <Panel
           setCreateAgentModal={setOpenCreateModal}
-          setFilterModal={""}
           onSearchChange={handleSearchChange} // Pass the search function
         />
         <TableContainer
