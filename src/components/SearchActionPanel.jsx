@@ -1,21 +1,29 @@
 "use client";
 import { useState } from "react";
 
-export default function Panel({ setCreateAgentModal, onSearchChange }) {
+export default function Panel({ setCreateAgentModal, onSearchChange, filter,setFilter }) {
   const [searchQuery, setSearchQuery] = useState(""); // State to store the search query
   const [isFilterDropdownOpen, setIsFilterDropdownOpen] = useState(false); // State to control filter dropdown visibility
-
+   // State to store the selected filters
+  const showList = [
+    "INTERDIVE",
+    "FESPO",
+    " UK GO DIVE",
+    "DEMA",
+    "IT BERLIN",
+    "BBTF",
+    "BOOT",
+    "DEUIKVECTOR",
+  ];
   // Function to handle changes in the search input
   const handleSearchChange = (event) => {
     const query = event.target.value;
     setSearchQuery(query);
     onSearchChange(query); // Pass the search query to the parent component
   };
-
   const toggleFilterDropdown = () => {
     setIsFilterDropdownOpen(!isFilterDropdownOpen);
   };
-
   return (
     <div className="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
       <div className="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
@@ -58,99 +66,115 @@ export default function Panel({ setCreateAgentModal, onSearchChange }) {
             <i className="fa-solid fa-filter"></i>
             Filter
           </button>
-          {isFilterDropdownOpen && <FilterDropdown />}{" "}
+          {isFilterDropdownOpen && (
+            <div
+              id="filterDropdown"
+              className="z-10 w-56 p-3 bg-white rounded-lg shadow dark:bg-gray-700"
+            >
+              <h6 className="mb-3 text-sm font-medium text-gray-900 dark:text-white">
+                Tag Region
+              </h6>
+              <ul
+                className="space-y-2 text-sm"
+                aria-labelledby="filterDropdownButton"
+              >
+                <li className="flex items-center">
+                  <input
+                    id="asia"
+                    type="checkbox"
+                    value=""
+                    className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+                    onChange={() => {
+                      setFilter({
+                        ...filter,
+                        tagRegion: [...filter.tagRegion, "ASIA"],
+                      });
+                    }}
+                  />
+                  <label
+                    for="asia"
+                    className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                  >
+                    ASIA
+                  </label>
+                </li>
+                <li className="flex items-center">
+                  <input
+                    id="europe"
+                    type="checkbox"
+                    value=""
+                    className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+                    onChange={() => {
+                      setFilter({
+                        ...filter,
+                        tagRegion: [...filter.tagRegion, "EUROPE"],
+                      });
+                    }}
+                  />
+                  <label
+                    for="europe"
+                    className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                  >
+                    EUROPE
+                  </label>
+                </li>
+                <li className="flex items-center">
+                  <input
+                    id="us"
+                    type="checkbox"
+                    value=""
+                    className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+                    onChange={() => {
+                      setFilter({
+                        ...filter,
+                        tagRegion: [...filter.tagRegion, "USA"],
+                      });
+                    }}
+                  />
+                  <label
+                    for="usa"
+                    className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                  >
+                    USA
+                  </label>
+                </li>
+              </ul>
+              <h6 className="mb-3 text-sm font-medium text-gray-900 dark:text-white mt-5">
+                Show
+              </h6>
+              <ul
+                className="space-y-2 text-sm"
+                aria-labelledby="filterDropdownButton"
+              >
+                {showList.map((show) => (
+                  // eslint-disable-next-line react/jsx-key
+                  <li className="flex items-center">
+                    <input
+                      id={show}
+                      type="checkbox"
+                      value=""
+                      className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+                      onChange={() => {
+                        setFilter({
+                          ...filter,
+                          show: [...filter.show, show],
+                        });
+                      }}
+                    />
+                    <label
+                      for={show}
+                      className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
+                    >
+                      {show}
+                    </label>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}{" "}
           {/* Render the filter dropdown conditionally */}
         </div>
       </div>
-    </div>
-  );
-}
-
-function FilterDropdown() {
-  const showList = [
-    "INTERDIVE",
-    "FESPO",
-    " UK GO DIVE",
-    "DEMA",
-    "IT BERLIN",
-    "BBTF",
-    "BOOT",
-    "DEUIKVECTOR",
-  ];
-  return (
-    <div
-      id="filterDropdown"
-      className="z-10 w-56 p-3 bg-white rounded-lg shadow dark:bg-gray-700"
-    >
-      <h6 className="mb-3 text-sm font-medium text-gray-900 dark:text-white">
-        Tag Region
-      </h6>
-      <ul className="space-y-2 text-sm" aria-labelledby="filterDropdownButton">
-        <li className="flex items-center">
-          <input
-            id="asia"
-            type="checkbox"
-            value=""
-            className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-          />
-          <label
-            for="asia"
-            className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
-          >
-            ASIA
-          </label>
-        </li>
-        <li className="flex items-center">
-          <input
-            id="europe"
-            type="checkbox"
-            value=""
-            className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-          />
-          <label
-            for="europe"
-            className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
-          >
-            EUROPE
-          </label>
-        </li>
-        <li className="flex items-center">
-          <input
-            id="us"
-            type="checkbox"
-            value=""
-            className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-          />
-          <label
-            for="usa"
-            className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
-          >
-            USA
-          </label>
-        </li>
-      </ul>
-      <h6 className="mb-3 text-sm font-medium text-gray-900 dark:text-white mt-5">
-        Show
-      </h6>
-      <ul className="space-y-2 text-sm" aria-labelledby="filterDropdownButton">
-        {showList.map((show) => (
-          // eslint-disable-next-line react/jsx-key
-          <li className="flex items-center">
-            <input
-              id={show}
-              type="checkbox"
-              value=""
-              className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-            />
-            <label
-              for={show}
-              className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
-            >
-              {show}
-            </label>
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }

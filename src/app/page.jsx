@@ -18,10 +18,15 @@ export default function Home() {
 
   const [selectedData, setSelectedData] = useState(null);
   const [data, setData] = useState([]);
+  const [filter, setFilter] = useState({
+    tagRegion: [],
+    show: [],
+  });
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState(""); // New search state
   const itemsPerPage = 10;
 
+  console.log(filter);
   useEffect(() => {
     axios.get("https://saf-api-rcesi3nzea-as.a.run.app/agent").then((res) => {
       setData(res.data);
@@ -29,11 +34,41 @@ export default function Home() {
   }, []); // Fetch data on initial load
 
   // Filtering function based on search query
-  const filteredData = data.filter((item) =>
-    item.travelAgent.toLowerCase().includes(searchQuery.toLowerCase())
-  );
+ const filterData = () => {
+   // Filter by search query
+   const filteredBySearch = data.filter((item) =>
+     item.travelAgent.toLowerCase().includes(searchQuery.toLowerCase())
+   );
+
+   // Filter by tagRegion and show values from filter state
+   const filteredByFilters = filteredBySearch.filter((item) => {
+     if (filter.tagRegion.length === 0 && filter.show.length === 0) {
+       return true; // No filters selected, so all items pass
+     }
+
+     // Check if item's tagRegion is in the filter.tagRegion array
+     const tagRegionFilterPassed =
+       filter.tagRegion.length === 0 ||
+       filter.tagRegion.includes(item.tagRegion);
+
+     // Check if item's show value is a string and is in the filter.show array
+     const showFilterPassed =
+       filter.show.length === 0 ||
+       (typeof item.show === "string" &&
+         filter.show.some(
+           (filterValue) =>
+             filterValue.toLowerCase() === item.show.toLowerCase()
+         ));
+
+     // Return true only if both tagRegion and show filters pass
+     return tagRegionFilterPassed && showFilterPassed;
+   });
+
+   return filteredByFilters;
+ };
 
   // Calculate the range of items to display on the current page
+  const filteredData = filterData();
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
@@ -55,6 +90,8 @@ export default function Home() {
         <Panel
           setCreateAgentModal={setOpenCreateModal}
           onSearchChange={handleSearchChange} // Pass the search function
+          setFilter={setFilter}
+          filter={filter}
         />
         <TableContainer
           data={currentItems}
