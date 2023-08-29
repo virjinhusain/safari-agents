@@ -224,6 +224,111 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
               ))}
 
               {/* ... rest of the code ... */}
+              <div className="sm:col-span-2">
+                <label
+                  htmlFor="publishedResort"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Resort published on their website
+                </label>
+                <textarea
+                  id="publishedResort"
+                  rows="4"
+                  className="block p-2.5 h-64 w-full text-md text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  placeholder=""
+                  value={updatedData.publishedResort}
+                  onChange={(e) =>
+                    setUpdatedData({
+                      ...updatedData,
+                      publishedResort: e.target.value,
+                    })
+                  }
+                ></textarea>
+              </div>
+              <div className="sm:col-span-2">
+                <label
+                  htmlFor="salesBySafari"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Sales by Safari
+                </label>
+                <textarea
+                  id="salesBySafari"
+                  rows="4"
+                  className="block p-2.5 h-64 w-full text-md text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  placeholder=""
+                  value={updatedData.salesBySafari}
+                  onChange={(e) =>
+                    setUpdatedData({
+                      ...updatedData,
+                      salesBySafari: e.target.value,
+                    })
+                  }
+                ></textarea>
+              </div>
+              <div className="sm:col-span-2">
+                <label
+                  htmlFor="safariProduct"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Safari product on their website
+                </label>
+                <textarea
+                  id="safariProduct"
+                  rows="4"
+                  className="block p-2.5 h-64 w-full text-md text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  placeholder=""
+                  value={updatedData.safariProduct}
+                  onChange={(e) =>
+                    setUpdatedData({
+                      ...updatedData,
+                      safariProduct: e.target.value,
+                    })
+                  }
+                ></textarea>
+              </div>
+              <div className="sm:col-span-2">
+                <label
+                  htmlFor="notes"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Notes
+                </label>
+                <textarea
+                  id="notes"
+                  rows="4"
+                  className="block p-2.5 h-64 w-full text-md text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  placeholder="Add notes"
+                  value={updatedData.notes}
+                  onChange={(e) =>
+                    setUpdatedData({
+                      ...updatedData,
+                      notes: e.target.value,
+                    })
+                  }
+                ></textarea>
+              </div>
+              <div className="sm:col-span-2">
+                <label
+                  htmlFor="follow-up"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Follow up
+                </label>
+                <textarea
+                  id="follow-up"
+                  rows="4"
+                  className="block p-2.5 h-64 w-full text-md text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  placeholder=""
+                  value={updatedData.followUp}
+                  onChange={(e) =>
+                    setUpdatedData({
+                      ...updatedData,
+                      followUp: e.target.value,
+                    })
+                  }
+                ></textarea>
+              </div>
             </div>
 
             <div className="flex items-center space-x-4">
