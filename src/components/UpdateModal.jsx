@@ -50,6 +50,16 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
     });
   };
 
+  const addNewItem = (field) => {
+    setUpdatedData((prevData) => {
+      const updatedField = [...prevData[field], ""];
+      return {
+        ...prevData,
+        [field]: updatedField,
+      };
+    });
+  };
+
   return (
     <div
       tabIndex="-1"
@@ -75,6 +85,7 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
           </div>
           <form onSubmit={handleSubmit}>
             <div className="grid gap-4 mb-4 sm:grid-cols-2">
+              {/* ... Other fields ... */}
               <div>
                 <label
                   htmlFor="tag-region"
@@ -168,41 +179,52 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
                 />
               </div>
             </div>
+            <div>
+              {/* Input fields for arrays */}
+              {[
+                "show",
+                "contactPerson",
+                "phoneNumber",
+                "email",
+                "website",
+                "link",
+              ].map((field) => (
+                <div key={field} className="space-y-1">
+                  <label
+                    htmlFor={field}
+                    className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  >
+                    {field === "link"
+                      ? "Website"
+                      : field.charAt(0).toUpperCase() + field.slice(1)}
+                  </label>
+                  {updatedData[field].map((placeholder, index) => (
+                    <div className="flex items-center space-x-2" key={index}>
+                      <input
+                        type="text"
+                        name={`${field}-${index}`}
+                        id={`${field}-${index}`}
+                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                        value={placeholder}
+                        required=""
+                        onChange={(e) => handleInputChange(e, field, index)}
+                      />
+                      {index === updatedData[field].length - 1 && (
+                        <button
+                          type="button"
+                          onClick={() => addNewItem(field)}
+                          className="text-blue-600 hover:text-blue-700 focus:outline-none"
+                        >
+                          +
+                        </button>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              ))}
 
-            {/* Input fields for arrays */}
-            {[
-              "show",
-              "contactPerson",
-              "phoneNumber",
-              "email",
-              "website",
-              "link",
-            ].map((field) => (
-              <div className="space-y-1" key={field}>
-                <label
-                  htmlFor={field}
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  {field === "link"
-                    ? "Website"
-                    : field.charAt(0).toUpperCase() + field.slice(1)}
-                </label>
-                {updatedData[field].map((placeholder, index) => (
-                  <input
-                    key={index}
-                    type="text"
-                    name={`${field}-${index}`}
-                    id={`${field}-${index}`}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                    value={placeholder}
-                    required=""
-                    onChange={(e) => handleInputChange(e, field, index)}
-                  />
-                ))}
-              </div>
-            ))}
-
-            {/* ... rest of the code ... */}
+              {/* ... rest of the code ... */}
+            </div>
 
             <div className="flex items-center space-x-4">
               <button
