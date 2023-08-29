@@ -28,7 +28,7 @@ export default function TableContainer({
                 setData={setData}
                 setOpenReadModal={setOpenReadModal}
               >
-                {row._id}
+                {row.number}
               </TableCell>
               <TableCell
                 data={row}

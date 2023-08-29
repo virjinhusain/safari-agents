@@ -29,7 +29,12 @@ export default function Home() {
   console.log(filter);
   useEffect(() => {
     axios.get("https://saf-api-rcesi3nzea-as.a.run.app/agent").then((res) => {
-      setData(res.data);
+      // Map the response data to include the "number" attribute
+      const updatedData = res.data.map((item, index) => ({
+        ...item,
+        number: index + 1, // Add the "number" attribute, starting from 1
+      }));
+      setData(updatedData);
     });
   }, []); // Fetch data on initial load
 
