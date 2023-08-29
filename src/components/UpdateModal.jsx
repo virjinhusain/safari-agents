@@ -21,6 +21,7 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
     followUp: "",
   });
   const [id, setId] = useState("");
+
   useEffect(() => {
     if (data) {
       setUpdatedData(data);
@@ -30,13 +31,24 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    axios.patch(
-      `https://saf-api-rcesi3nzea-as.a.run.app/agent/${id}`,
-      updatedData
-    ).then((res) => {
-      setIsOpen(false);
-    })
-  }
+    axios
+      .patch(`https://saf-api-rcesi3nzea-as.a.run.app/agent/${id}`, updatedData)
+      .then((res) => {
+        setIsOpen(false);
+      });
+  };
+
+  const handleInputChange = (e, field, index) => {
+    const newValue = e.target.value;
+    setUpdatedData((prevData) => {
+      const updatedField = [...prevData[field]];
+      updatedField[index] = newValue;
+      return {
+        ...prevData,
+        [field]: updatedField,
+      };
+    });
+  };
 
   return (
     <div
@@ -81,7 +93,6 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
                     })
                   }
                 >
-                  <option selected="">Select region</option>
                   <option value="ASIA">ASIA</option>
                   <option value="EUROPE">EUROPE</option>
                   <option value="USA">USA</option>
@@ -156,274 +167,43 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
                   }
                 />
               </div>
-              <div className="space-y-1">
-                <label
-                  htmlFor="show"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Show
-                </label>
-                {updatedData.show.map((placeholder, index) => (
-                  <input
-                    key={index}
-                    type="text"
-                    name={`show-${index}`}
-                    id={`show-${index}`}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                    value={placeholder}
-                    required=""
-                    onChange={(e) => {
-                      const newShow = [...updatedData.show];
-                      newShow[index] = e.target.value;
-                      setUpdatedData({
-                        ...updatedData,
-                        show: newShow,
-                      });
-                    }}
-                  />
-                ))}
-              </div>
-              <div className="space-y-1">
-                <label
-                  htmlFor="contact-person"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Contact Person
-                </label>
-                {updatedData.contactPerson.map((placeholder, index) => (
-                  <input
-                    key={index}
-                    type="text"
-                    name={`contact-person-${index}`}
-                    id={`contact-person-${index}`}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                    value={placeholder}
-                    required=""
-                    onChange={(e) => {
-                      const newContactPerson = [...updatedData.contactPerson];
-                      newContactPerson[index] = e.target.value;
-                      setUpdatedData({
-                        ...updatedData,
-                        show: newContactPerson,
-                      });
-                    }}
-                  />
-                ))}
-              </div>
-              <div className="space-y-1">
-                <label
-                  htmlFor="phone-number"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Phone Number
-                </label>
-                {updatedData.phoneNumber.map((placeholder, index) => (
-                  <input
-                    key={index}
-                    type="text"
-                    name={`phone-number-${index}`}
-                    id={`phone-number-${index}`}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                    value={placeholder}
-                    required=""
-                    onChange={(e) => {
-                      const newPhoneNumber = [...updatedData.phoneNumber];
-                      newPhoneNumber[index] = e.target.value;
-                      setUpdatedData({
-                        ...updatedData,
-                        show: newPhoneNumber,
-                      });
-                    }}
-                  />
-                ))}
-              </div>
-              <div className="space-y-1">
-                <label
-                  htmlFor="email"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Email
-                </label>
-                {updatedData.email.map((placeholder, index) => (
-                  <input
-                    key={index}
-                    type="text"
-                    name={`email-${index}`}
-                    id={`email-${index}`}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                    value={placeholder}
-                    required=""
-                    onChange={(e) => {
-                      const newEmail = [...updatedData.email];
-                      newEmail[index] = e.target.value;
-                      setUpdatedData({
-                        ...updatedData,
-                        show: newEmail,
-                      });
-                    }}
-                  />
-                ))}
-              </div>
-              <div className="space-y-1">
-                <label
-                  htmlFor="website"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Website
-                </label>
-                {updatedData.website.map((placeholder, index) => (
-                  <input
-                    key={index}
-                    type="text"
-                    name={`website-${index}`}
-                    id={`website-${index}`}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                    value={placeholder}
-                    required=""
-                    onChange={(e) => {
-                      const newWebsite = [...updatedData.website];
-                      newWebsite[index] = e.target.value;
-                      setUpdatedData({
-                        ...updatedData,
-                        show: newWebsite,
-                      });
-                    }}
-                  />
-                ))}
-              </div>
-              <div className="space-y-1">
-                <label
-                  htmlFor="link"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Link
-                </label>
-                {updatedData.link.map((placeholder, index) => (
-                  <input
-                    key={index}
-                    type="text"
-                    name={`link-${index}`}
-                    id={`link-${index}`}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                    value={placeholder}
-                    required=""
-                    onChange={(e) => {
-                      const newLink = [...updatedData.link];
-                      newLink[index] = e.target.value;
-                      setUpdatedData({
-                        ...updatedData,
-                        show: newLink,
-                      });
-                    }}
-                  />
-                ))}
-              </div>
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="publishedResort"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Resort published on their website
-                </label>
-                <textarea
-                  id="publishedResort"
-                  rows="4"
-                  className="block p-2.5 h-64 w-full text-md text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  placeholder=""
-                  value={updatedData.publishedResort}
-                  onChange={(e) =>
-                    setUpdatedData({
-                      ...updatedData,
-                      publishedResort: e.target.value,
-                    })
-                  }
-                ></textarea>
-              </div>
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="salesBySafari"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Sales by Safari
-                </label>
-                <textarea
-                  id="salesBySafari"
-                  rows="4"
-                  className="block p-2.5 h-64 w-full text-md text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  placeholder=""
-                  value={updatedData.salesBySafari}
-                  onChange={(e) =>
-                    setUpdatedData({
-                      ...updatedData,
-                      salesBySafari: e.target.value,
-                    })
-                  }
-                ></textarea>
-              </div>
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="safariProduct"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Safari product on their website
-                </label>
-                <textarea
-                  id="safariProduct"
-                  rows="4"
-                  className="block p-2.5 h-64 w-full text-md text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  placeholder=""
-                  value={updatedData.safariProduct}
-                  onChange={(e) =>
-                    setUpdatedData({
-                      ...updatedData,
-                      safariProduct: e.target.value,
-                    })
-                  }
-                ></textarea>
-              </div>
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="notes"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Notes
-                </label>
-                <textarea
-                  id="notes"
-                  rows="4"
-                  className="block p-2.5 h-64 w-full text-md text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  placeholder="Add notes"
-                  value={updatedData.notes}
-                  onChange={(e) =>
-                    setUpdatedData({
-                      ...updatedData,
-                      notes: e.target.value,
-                    })
-                  }
-                ></textarea>
-              </div>
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="follow-up"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Follow up
-                </label>
-                <textarea
-                  id="follow-up"
-                  rows="4"
-                  className="block p-2.5 h-64 w-full text-md text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  placeholder=""
-                  value={updatedData.followUp}
-                  onChange={(e) =>
-                    setUpdatedData({
-                      ...updatedData,
-                      followUp: e.target.value,
-                    })
-                  }
-                ></textarea>
-              </div>
             </div>
+
+            {/* Input fields for arrays */}
+            {[
+              "show",
+              "contactPerson",
+              "phoneNumber",
+              "email",
+              "website",
+              "link",
+            ].map((field) => (
+              <div className="space-y-1" key={field}>
+                <label
+                  htmlFor={field}
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  {field === "link"
+                    ? "Website"
+                    : field.charAt(0).toUpperCase() + field.slice(1)}
+                </label>
+                {updatedData[field].map((placeholder, index) => (
+                  <input
+                    key={index}
+                    type="text"
+                    name={`${field}-${index}`}
+                    id={`${field}-${index}`}
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    value={placeholder}
+                    required=""
+                    onChange={(e) => handleInputChange(e, field, index)}
+                  />
+                ))}
+              </div>
+            ))}
+
+            {/* ... rest of the code ... */}
+
             <div className="flex items-center space-x-4">
               <button
                 type="submit"

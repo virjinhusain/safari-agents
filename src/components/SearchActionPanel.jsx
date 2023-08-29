@@ -69,7 +69,7 @@ export default function Panel({ setCreateAgentModal, onSearchChange, filter,setF
           {isFilterDropdownOpen && (
             <div
               id="filterDropdown"
-              className="z-10 w-56 p-3 bg-white rounded-lg shadow dark:bg-gray-700"
+              className="z-10 w-56 p-3 relative bg-white rounded-lg shadow dark:bg-gray-700"
             >
               <h6 className="mb-3 text-sm font-medium text-gray-900 dark:text-white">
                 Tag Region
@@ -140,7 +140,7 @@ export default function Panel({ setCreateAgentModal, onSearchChange, filter,setF
                 </li>
               </ul>
               <h6 className="mb-3 text-sm font-medium text-gray-900 dark:text-white mt-5">
-                Show
+                Show - under development
               </h6>
               <ul
                 className="space-y-2 text-sm"
