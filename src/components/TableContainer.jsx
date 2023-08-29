@@ -1,6 +1,4 @@
 "use client";
-import { useState } from "react";
-import DeleteModal from "./DeleteModal";
 
 export default function TableContainer({
   data,
@@ -62,7 +60,7 @@ function TableHeaderCell({ children }) {
   return (
     <th
       scope="col"
-      className="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
     >
       {children}
     </th>
@@ -75,7 +73,7 @@ function TableRow({ children }) {
 
 function TableCell({ children, data, setData, setOpenReadModal }) {
   return (
-    <td className="px-3 py-4 whitespace-nowrap">
+    <td className="px-6 py-2 whitespace-nowrap">
       <div
         className="text-sm text-gray-900"
         onClick={() => {
@@ -89,17 +87,6 @@ function TableCell({ children, data, setData, setOpenReadModal }) {
   );
 }
 
-function ActionsTableHeaderCell() {
-  return (
-    <th
-      scope="col"
-      className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
-    >
-      Actions
-    </th>
-  );
-}
-
 function ActionsTableCell({
   data,
   setData,
@@ -107,7 +94,7 @@ function ActionsTableCell({
   setOpenDeleteModal,
 }) {
   return (
-    <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+    <td className="px-4 py-2 whitespace-nowrap text-center text-sm font-medium">
       <button
         type="button"
         className="text-indigo-600 hover:text-indigo-900"
@@ -129,5 +116,17 @@ function ActionsTableCell({
         Delete
       </button>
     </td>
+  );
+}
+
+
+function ActionsTableHeaderCell() {
+  return (
+    <th
+      scope="col"
+      className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+    >
+      Actions
+    </th>
   );
 }
