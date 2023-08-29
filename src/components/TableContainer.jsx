@@ -14,24 +14,22 @@ export default function TableContainer({
       <table className="min-w-full divide-y divide-gray-200">
         <thead className="bg-gray-50">
           <tr>
-            {/* <TableHeaderCell>ID Agents</TableHeaderCell> */}
+            <TableHeaderCell>ID Agents</TableHeaderCell>
             <TableHeaderCell>Tag Region</TableHeaderCell>
             <TableHeaderCell>Travel Agents</TableHeaderCell>
-            <TableHeaderCell>Contact Person</TableHeaderCell>
-            <TableHeaderCell>Phone Number</TableHeaderCell>
             <ActionsTableHeaderCell />
           </tr>
         </thead>
         <tbody>
           {data.map((row) => (
             <TableRow key={row.idAgent}>
-              {/* <TableCell
+              <TableCell
                 data={row}
                 setData={setData}
                 setOpenReadModal={setOpenReadModal}
               >
                 {row.idAgent}
-              </TableCell> */}
+              </TableCell>
               <TableCell
                 data={row}
                 setData={setData}
@@ -45,20 +43,6 @@ export default function TableContainer({
                 setOpenReadModal={setOpenReadModal}
               >
                 {row.travelAgent}
-              </TableCell>
-              <TableCell
-                data={row}
-                setData={setData}
-                setOpenReadModal={setOpenReadModal}
-              >
-                {row.contactPerson}
-              </TableCell>
-              <TableCell
-                data={row}
-                setData={setData}
-                setOpenReadModal={setOpenReadModal}
-              >
-                {row.phoneNumber}
               </TableCell>
               <ActionsTableCell
                 data={row}
