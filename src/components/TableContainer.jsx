@@ -62,7 +62,7 @@ function TableHeaderCell({ children }) {
   return (
     <th
       scope="col"
-      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+      className="px-2 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
     >
       {children}
     </th>
@@ -75,7 +75,7 @@ function TableRow({ children }) {
 
 function TableCell({ children, data, setData, setOpenReadModal }) {
   return (
-    <td className="px-6 py-4 whitespace-nowrap">
+    <td className="px-3 py-4 whitespace-nowrap">
       <div
         className="text-sm text-gray-900"
         onClick={() => {
