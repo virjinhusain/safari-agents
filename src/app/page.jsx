@@ -24,19 +24,33 @@ export default function Home() {
   });
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState(""); // New search state
+  const [sortOrder, setSortOrder] = useState("AZ"); // Sorting state
   const itemsPerPage = 10;
 
-  console.log(filter);
+  // Fetch data function
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const fetchData = () => {
+    axios
+      .get("https://saf-api-rcesi3nzea-as.a.run.app/agent", {
+        params: {
+          search: searchQuery, // Pass search query as a parameter
+          tagRegion: filter.tagRegion, // Pass tagRegion filter as a parameter
+          show: filter.show, // Pass show filter as a parameter
+        },
+      })
+      .then((res) => {
+        // Map the response data to include the "number" attribute
+        const updatedData = res.data.map((item, index) => ({
+          ...item,
+          number: index + 1, // Add the "number" attribute, starting from 1
+        }));
+        setData(updatedData);
+      });
+  };
+
   useEffect(() => {
-    axios.get("https://saf-api-rcesi3nzea-as.a.run.app/agent").then((res) => {
-      // Map the response data to include the "number" attribute
-      const updatedData = res.data.map((item, index) => ({
-        ...item,
-        number: index + 1, // Add the "number" attribute, starting from 1
-      }));
-      setData(updatedData);
-    });
-  }, []); // Fetch data on initial load
+    fetchData();
+  }, [filter, searchQuery, currentPage, sortOrder, fetchData]);
 
   // Filtering function based on search query
   const filterData = () => {
@@ -56,18 +70,8 @@ export default function Home() {
         filter.tagRegion.length === 0 ||
         filter.tagRegion.includes(item.tagRegion);
 
-      // Check if item's show value is a string and is in the filter.show array
-      // const showFilterPassed =
-      //   filter.show.length === 0 ||
-      //   (typeof item.show === "string" &&
-      //     filter.show.some(
-      //       (filterValue) =>
-      //         filterValue.toLowerCase() ===
-      //         item.show.split(" ")[0].
-      //         toLowerCase()
-      //     ));
-
-      const showFilterPassed = filter.show.length === 0 || filter.show.includes(item.show);
+      const showFilterPassed =
+        filter.show.length === 0 || filter.show.includes(item.show);
 
       // Return true only if both tagRegion and show filters pass
       return tagRegionFilterPassed && showFilterPassed;
@@ -93,24 +97,48 @@ export default function Home() {
     setCurrentPage(1); // Reset to first page when search query changes
   };
 
+  // Sorting function
+  const sortData = (order) => {
+    const sortedData = [...data]; // Create a copy of data
+    sortedData.sort((a, b) =>
+      order === "AZ"
+        ? a.travelAgent.localeCompare(b.travelAgent)
+        : b.travelAgent.localeCompare(a.travelAgent)
+    );
+    setData(sortedData);
+  };
+
+  // Sorting function for "AZ"
+  const sortAZ = () => {
+    setSortOrder("AZ");
+    sortData("AZ"); // Call the sorting function
+  };
+
+  // Sorting function for "ZA"
+  const sortZA = () => {
+    setSortOrder("ZA");
+    sortData("ZA"); // Call the sorting function
+  };
+
   return (
     <section className="bg-gray-50 dark:bg-gray-900 h-full p-3 sm:p-5 antialiased">
       <div className="space-y-1">
         <Panel
           setCreateAgentModal={setOpenCreateModal}
-          onSearchChange={handleSearchChange} // Pass the search function
+          onSearchChange={handleSearchChange}
           setFilter={setFilter}
           filter={filter}
+          onSortAZ={sortAZ} // Pass the sorting functions as props
+          onSortZA={sortZA}
         />
         <TableContainer
           data={currentItems}
           setData={setSelectedData}
-          setOpenReadModal={setOpenReadModal}
           setOpenUpdateModal={setOpenUpdateModal}
           setOpenDeleteModal={setOpenDeleteModal}
         />
         <Navigation
-          length={filteredData.length} // Use filtered data length for pagination
+          length={filteredData.length}
           itemsPerPage={itemsPerPage}
           currentPage={currentPage}
           onPageChange={handlePageChange}
@@ -135,3 +163,4 @@ export default function Home() {
     </section>
   );
 }
+

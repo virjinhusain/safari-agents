@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
+// Define your component.
 export default function ReadModal({ data, isOpen, setIsOpen }) {
   const [virjin, setVirjin] = useState({});
 
@@ -24,6 +25,7 @@ export default function ReadModal({ data, isOpen, setIsOpen }) {
       <div className="p-4 sm:p-5 w-screen h-screen">
         <div className="relative p-4 w-full max-w-full">
           <div className="relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5">
+            {/* Header */}
             <div className="flex justify-between mb-4 rounded-t sm:mb-5">
               <div className="text-lg text-gray-900 md:text-xl dark:text-white">
                 <h3 className="font-semibold ">{virjin.travelAgent}</h3>
@@ -40,48 +42,22 @@ export default function ReadModal({ data, isOpen, setIsOpen }) {
                 </button>
               </div>
             </div>
+
+            {/* Table */}
             <div className="table-container overflow-x-auto">
               <table className="w-full">
                 <tbody>
-                  <InfoItem
-                    title="Contact person"
-                    value={virjin.contactPerson}
-                  />
-                  <InfoItem
-                    title="Resort published on agent website"
-                    value={virjin.publishedResort}
-                  />
-                  <InfoItem title="Email" value={virjin.email} />
-                  <InfoItem
-                    title="Sales by Safari"
-                    value={virjin.salesBySafari}
-                  />
-                  <InfoItem title="Phone number" value={virjin.phoneNumber} />
-                  <InfoItem
-                    title="Safari's product on their website"
-                    value={virjin.safariProduct}
-                  />
-                  <InfoItem title="Show" value={virjin.show} />
-                  <InfoItem title="Website" value={virjin.website} />
-                  <InfoItem title="Gross sale 2022" value={virjin.sales2022} />
-                  <InfoItem title="Gross sale 2023" value={virjin.sales2023} />
-                  <InfoItem title="Link" value={virjin.link} />
-                  <InfoItem title="Notes" value={virjin.notes} />
-                  <InfoItem
-                    title="Sales by Safari"
-                    value={virjin.salesBySafari}
-                  />
-                  <InfoItem title="Follow up" value={virjin.followUp} />
+                  {/* Info Items */}
+                  {Object.entries(virjin).map(([title, value], index) => (
+                    <InfoItem key={index} title={title} value={value} />
+                  ))}
                 </tbody>
               </table>
             </div>
+
+            {/* Footer */}
             <div className="flex justify-between items-center mt-6">
               <div className="flex space-x-3 sm:space-x-4"></div>
-              <ActionButton
-                label="Delete"
-                variant="danger"
-                onClick={() => {}}
-              />
             </div>
           </div>
         </div>
@@ -89,6 +65,8 @@ export default function ReadModal({ data, isOpen, setIsOpen }) {
     </div>
   );
 }
+
+// InfoItem component
 function InfoItem({ title, value }) {
   return (
     <tr>
@@ -99,22 +77,5 @@ function InfoItem({ title, value }) {
         {value}
       </td>
     </tr>
-  );
-}
-
-function ActionButton({ label, onClick, variant = "primary" }) {
-  const buttonStyles = {
-    primary: "text-white bg-primary-700 hover:bg-primary-800",
-    danger: "text-white bg-red-600 hover:bg-red-700",
-  };
-
-  return (
-    <button
-      type="button"
-      className={`py-2.5 px-5 text-sm font-medium focus:outline-none rounded-lg text-center ${buttonStyles[variant]}`}
-      onClick={onClick}
-    >
-      {label}
-    </button>
   );
 }

@@ -198,28 +198,51 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
                       ? "Website"
                       : field.charAt(0).toUpperCase() + field.slice(1)}
                   </label>
-                  {updatedData[field].map((placeholder, index) => (
-                    <div className="flex items-center space-x-2" key={index}>
+                  {updatedData[field].length > 0 ? (
+                    updatedData[field].map((placeholder, index) => (
+                      <div className="flex items-center space-x-2" key={index}>
+                        <input
+                          type="text"
+                          name={`${field}-${index}`}
+                          id={`${field}-${index}`}
+                          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                          value={placeholder}
+                          required=""
+                          onChange={(e) => handleInputChange(e, field, index)}
+                        />
+                        {index === updatedData[field].length - 1 && (
+                          <button
+                            type="button"
+                            onClick={() => addNewItem(field)}
+                            className="text-blue-600 hover:text-blue-700 focus:outline-none"
+                          >
+                            +
+                          </button>
+                        )}
+                      </div>
+                    ))
+                  ) : (
+                    <div className="flex items-center space-x-2">
                       <input
                         type="text"
-                        name={`${field}-${index}`}
-                        id={`${field}-${index}`}
+                        name={`${field}-0`}
+                        id={`${field}-0`}
                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        value={placeholder}
+                        placeholder={`Enter ${
+                          field === "link" ? "Website" : field
+                        }`}
                         required=""
-                        onChange={(e) => handleInputChange(e, field, index)}
+                        onChange={(e) => handleInputChange(e, field, 0)}
                       />
-                      {index === updatedData[field].length - 1 && (
-                        <button
-                          type="button"
-                          onClick={() => addNewItem(field)}
-                          className="text-blue-600 hover:text-blue-700 focus:outline-none"
-                        >
-                          +
-                        </button>
-                      )}
+                      <button
+                        type="button"
+                        onClick={() => addNewItem(field)}
+                        className="text-blue-600 hover:text-blue-700 focus:outline-none"
+                      >
+                        +
+                      </button>
                     </div>
-                  ))}
+                  )}
                 </div>
               ))}
 

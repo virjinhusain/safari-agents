@@ -1,10 +1,17 @@
 "use client";
 import { useState } from "react";
 
-export default function Panel({ setCreateAgentModal, onSearchChange, filter,setFilter }) {
+export default function Panel({
+  setCreateAgentModal,
+  onSearchChange,
+  filter,
+  setFilter,
+  onSortAZ,
+  onSortZA,
+}) {
   const [searchQuery, setSearchQuery] = useState(""); // State to store the search query
   const [isFilterDropdownOpen, setIsFilterDropdownOpen] = useState(false); // State to control filter dropdown visibility
-   // State to store the selected filters
+  // State to store the selected filters
   const showList = [
     "INTERDIVE",
     "FESPO",
@@ -172,7 +179,20 @@ export default function Panel({ setCreateAgentModal, onSearchChange, filter,setF
               </ul>
             </div>
           )}{" "}
-          {/* Render the filter dropdown conditionally */}
+          <button
+            type="button"
+            onClick={onSortAZ}
+            className="flex items-center justify-center text-gray-500 bg-gray-300 hover:bg-gray-400 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-xs px-4 py-2 gap-2"
+          >
+            <i className="fa-solid fa-sort-alpha-down"></i>
+          </button>
+          <button
+            type="button"
+            onClick={onSortZA}
+            className="flex items-center justify-center text-gray-500 bg-gray-300 hover:bg-gray-400 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-xs px-4 py-2 gap-2"
+          >
+            <i className="fa-solid fa-sort-alpha-down-alt"></i>
+          </button>
         </div>
       </div>
     </div>

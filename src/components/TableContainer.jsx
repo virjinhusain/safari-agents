@@ -3,7 +3,6 @@
 export default function TableContainer({
   data,
   setData,
-  setOpenReadModal,
   setOpenUpdateModal,
   setOpenDeleteModal,
 }) {
@@ -24,21 +23,21 @@ export default function TableContainer({
               <TableCell
                 data={row}
                 setData={setData}
-                setOpenReadModal={setOpenReadModal}
+                setOpenUpdateModal={setOpenUpdateModal}
               >
                 {row.number}
               </TableCell>
               <TableCell
                 data={row}
                 setData={setData}
-                setOpenReadModal={setOpenReadModal}
+                setOpenUpdateModal={setOpenUpdateModal}
               >
                 {row.tagRegion}
               </TableCell>
               <TableCell
                 data={row}
                 setData={setData}
-                setOpenReadModal={setOpenReadModal}
+                setOpenUpdateModal={setOpenUpdateModal}
               >
                 {row.travelAgent}
               </TableCell>
@@ -71,14 +70,14 @@ function TableRow({ children }) {
   return <tr className="bg-white divide-y divide-gray-200">{children}</tr>;
 }
 
-function TableCell({ children, data, setData, setOpenReadModal }) {
+function TableCell({ children, data, setData, setOpenUpdateModal }) {
   return (
     <td className="px-6 py-2 whitespace-nowrap">
       <div
         className="text-sm text-gray-900"
         onClick={() => {
           setData(data);
-          setOpenReadModal(true);
+          setOpenUpdateModal(true);
         }}
       >
         {children}
@@ -90,21 +89,11 @@ function TableCell({ children, data, setData, setOpenReadModal }) {
 function ActionsTableCell({
   data,
   setData,
-  setOpenUpdateModal,
   setOpenDeleteModal,
 }) {
   return (
     <td className="px-4 py-2 whitespace-nowrap text-center text-sm font-medium">
-      <button
-        type="button"
-        className="text-indigo-600 hover:text-indigo-900"
-        onClick={() => {
-          setData(data);
-          setOpenUpdateModal(true);
-        }}
-      >
-        Edit
-      </button>
+     
       <button
         type="button"
         className="text-red-600 hover:text-red-900 ml-2"
