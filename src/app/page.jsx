@@ -1,7 +1,6 @@
-"use client";
+"use client"
 import { useEffect, useState } from "react";
 import axios from "axios";
-
 import Panel from "@/components/SearchActionPanel";
 import Navigation from "@/components/Navigation";
 import TableContainer from "@/components/TableContainer";
@@ -10,12 +9,14 @@ import ReadModal from "@/components/ReadModal";
 import UpdateModal from "@/components/UpdateModal";
 import DeleteModal from "@/components/DeleteModal";
 
+// Extracted constant for the API URL
+const API_URL = "https://saf-api-rcesi3nzea-as.a.run.app/agent";
+
 export default function Home() {
   const [openCreateModal, setOpenCreateModal] = useState(false);
   const [openReadModal, setOpenReadModal] = useState(false);
   const [openUpdateModal, setOpenUpdateModal] = useState(false);
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
-
   const [selectedData, setSelectedData] = useState(null);
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState({
@@ -23,26 +24,24 @@ export default function Home() {
     show: [],
   });
   const [currentPage, setCurrentPage] = useState(1);
-  const [searchQuery, setSearchQuery] = useState(""); // New search state
-  const [sortOrder, setSortOrder] = useState("AZ"); // Sorting state
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortOrder, setSortOrder] = useState("AZ");
   const itemsPerPage = 10;
 
-  // Fetch data function
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // Extracted function to fetch data
   const fetchData = () => {
     axios
-      .get("https://saf-api-rcesi3nzea-as.a.run.app/agent", {
+      .get(API_URL, {
         params: {
-          search: searchQuery, // Pass search query as a parameter
-          tagRegion: filter.tagRegion, // Pass tagRegion filter as a parameter
-          show: filter.show, // Pass show filter as a parameter
+          search: searchQuery,
+          tagRegion: filter.tagRegion,
+          show: filter.show,
         },
       })
       .then((res) => {
-        // Map the response data to include the "number" attribute
         const updatedData = res.data.map((item, index) => ({
           ...item,
-          number: index + 1, // Add the "number" attribute, starting from 1
+          number: index + 1,
         }));
         setData(updatedData);
       });
@@ -50,56 +49,52 @@ export default function Home() {
 
   useEffect(() => {
     fetchData();
-  }, [filter, searchQuery, currentPage, sortOrder, fetchData]);
+  }, [filter, searchQuery, currentPage, sortOrder]);
 
-  // Filtering function based on search query
   const filterData = () => {
-    // Filter by search query
     const filteredBySearch = data.filter((item) =>
       item.travelAgent.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
-    // Filter by tagRegion and show values from filter state
     const filteredByFilters = filteredBySearch.filter((item) => {
       if (filter.tagRegion.length === 0 && filter.show.length === 0) {
-        return true; // No filters selected, so all items pass
+        return true;
       }
 
-      // Check if item's tagRegion is in the filter.tagRegion array
       const tagRegionFilterPassed =
         filter.tagRegion.length === 0 ||
         filter.tagRegion.includes(item.tagRegion);
 
       const showFilterPassed =
-        filter.show.length === 0 || filter.show.includes(item.show);
+        filter.show.length === 0 ||
+        filter.show.some((filterItem) => {
+          if (typeof item.show === "string") {
+            return item.show.toLowerCase().includes(filterItem.toLowerCase());
+          }
+          return false;
+        });
 
-      // Return true only if both tagRegion and show filters pass
       return tagRegionFilterPassed && showFilterPassed;
     });
-
     return filteredByFilters;
   };
 
-  // Calculate the range of items to display on the current page
   const filteredData = filterData();
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem);
 
-  // Handle page change
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
 
-  // Handle search query change
   const handleSearchChange = (query) => {
     setSearchQuery(query);
-    setCurrentPage(1); // Reset to first page when search query changes
+    setCurrentPage(1);
   };
 
-  // Sorting function
   const sortData = (order) => {
-    const sortedData = [...data]; // Create a copy of data
+    const sortedData = [...data];
     sortedData.sort((a, b) =>
       order === "AZ"
         ? a.travelAgent.localeCompare(b.travelAgent)
@@ -108,16 +103,14 @@ export default function Home() {
     setData(sortedData);
   };
 
-  // Sorting function for "AZ"
   const sortAZ = () => {
     setSortOrder("AZ");
-    sortData("AZ"); // Call the sorting function
+    sortData("AZ");
   };
 
-  // Sorting function for "ZA"
   const sortZA = () => {
     setSortOrder("ZA");
-    sortData("ZA"); // Call the sorting function
+    sortData("ZA");
   };
 
   return (
@@ -128,7 +121,7 @@ export default function Home() {
           onSearchChange={handleSearchChange}
           setFilter={setFilter}
           filter={filter}
-          onSortAZ={sortAZ} // Pass the sorting functions as props
+          onSortAZ={sortAZ}
           onSortZA={sortZA}
         />
         <TableContainer
@@ -163,4 +156,3 @@ export default function Home() {
     </section>
   );
 }
-
