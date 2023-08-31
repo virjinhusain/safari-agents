@@ -194,9 +194,7 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
                     htmlFor={field}
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
-                    {field === "link"
-                      ? "Website"
-                      : field.charAt(0).toUpperCase() + field.slice(1)}
+                    {field.charAt(0).toUpperCase() + field.slice(1)}
                   </label>
                   {updatedData[field].length > 0 ? (
                     updatedData[field].map((placeholder, index) => (
