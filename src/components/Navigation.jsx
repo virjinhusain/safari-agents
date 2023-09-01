@@ -18,8 +18,8 @@ export default function Navigation({
       className="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-800 z-10"
       aria-label="Table navigation"
     >
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4">
-        <span className="text-xs font-normal text-gray-500 dark:text-gray-400">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 sm:space-y-0 p-1">
+        <span className="text-xs sm:text-sm font-normal text-gray-500 dark:text-gray-400">
           Showing{" "}
           <span className="font-semibold text-gray-900 dark:text-white">
             {currentPage === 1 ? 1 : (currentPage - 1) * itemsPerPage + 1}
