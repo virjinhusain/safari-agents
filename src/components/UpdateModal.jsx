@@ -1,8 +1,11 @@
 "use client";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function UpdateModal({ data, isOpen, setIsOpen }) {
+  const router = useRouter();
   const [updatedData, setUpdatedData] = useState({
     tagRegion: "",
     travelAgent: "",
@@ -215,7 +218,13 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
                             type="button"
                             className="text-blue-600 hover:text-blue-700 focus:outline-none"
                             onClick={() => {
-                              console.log("delete");
+                              if (field === "email") {
+                                router.push(
+                                  `mailto:${updatedData[field][index]}`
+                                );
+                              } else {
+                                router.push(updatedData[field][index], "_blank");
+                              }
                             }}
                           >
                             <i class="fa-solid fa-arrow-up-right-from-square"></i>
