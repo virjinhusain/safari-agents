@@ -20,7 +20,7 @@ export default function Panel({
     "IT BERLIN",
     "BBTF",
     "BOOT",
-    "DEUIKVECTOR",
+    "DUIKVAKER",
   ];
   // Function to handle changes in the search input
   const handleSearchChange = (event) => {

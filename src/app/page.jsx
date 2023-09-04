@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Panel from "@/components/SearchActionPanel";
@@ -29,27 +29,45 @@ export default function Home() {
   const itemsPerPage = 10;
 
   // Extracted function to fetch data
-  const fetchData = () => {
-    axios
-      .get(API_URL, {
-        params: {
-          search: searchQuery,
-          tagRegion: filter.tagRegion,
-          show: filter.show,
-        },
-      })
-      .then((res) => {
-        const updatedData = res.data.map((item, index) => ({
-          ...item,
-          number: index + 1,
-        }));
-        setData(updatedData);
-      });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const fetchData = async () => {
+    try {
+      const response = await axios.post(
+        "https://saf-api-rcesi3nzea-as.a.run.app/graphql",
+        {
+          query: `query {
+ Agents(show: "${filter.show}") {
+    tagRegion
+    travelAgent
+    contactPerson
+    email
+    phoneNumber
+    show
+    website
+    link
+    publishedResort
+    salesBySafari
+    safariProduct
+    sales2022
+    sales2023
+    notes
+    followUp
+  }
+}
+`,
+        }
+      );
+      let items = response.data.data.Agents;
+      setData(items);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
     fetchData();
-  }, [filter, searchQuery, currentPage, sortOrder]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filter, searchQuery, currentPage, sortOrder, fetchData]);
 
   const filterData = () => {
     const filteredBySearch = data.filter((item) =>
@@ -65,16 +83,7 @@ export default function Home() {
         filter.tagRegion.length === 0 ||
         filter.tagRegion.includes(item.tagRegion);
 
-      const showFilterPassed =
-        filter.show.length === 0 ||
-        filter.show.some((filterItem) => {
-          if (typeof item.show === "string") {
-            return item.show.toLowerCase().includes(filterItem.toLowerCase());
-          }
-          return false;
-        });
-
-      return tagRegionFilterPassed && showFilterPassed;
+      return tagRegionFilterPassed;
     });
     return filteredByFilters;
   };
