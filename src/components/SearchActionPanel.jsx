@@ -92,19 +92,29 @@ export default function Panel({
                     value=""
                     className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
                     onChange={() => {
-                      setFilter({
-                        ...filter,
-                        tagRegion: [...filter.tagRegion, "ASIA"],
-                      });
+                      if (filter.tagRegion.includes("ASIA")) {
+                        setFilter({
+                          ...filter,
+                          tagRegion: filter.tagRegion.filter(
+                            (region) => region !== "ASIA"
+                          ),
+                        });
+                      } else {
+                        setFilter({
+                          ...filter,
+                          tagRegion: [...filter.tagRegion, "ASIA"],
+                        });
+                      }
                     }}
                   />
                   <label
-                    for="asia"
+                    htmlFor="asia"
                     className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
                   >
                     ASIA
                   </label>
                 </li>
+                
                 <li className="flex items-center">
                   <input
                     id="europe"
@@ -112,39 +122,59 @@ export default function Panel({
                     value=""
                     className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
                     onChange={() => {
-                      setFilter({
-                        ...filter,
-                        tagRegion: [...filter.tagRegion, "EUROPE"],
-                      });
+                      if (filter.tagRegion.includes("EUROPE")) {
+                        setFilter({
+                          ...filter,
+                          tagRegion: filter.tagRegion.filter(
+                            (region) => region !== "EUROPE"
+                          ),
+                        });
+                      } else {
+                        setFilter({
+                          ...filter,
+                          tagRegion: [...filter.tagRegion, "EUROPE"],
+                        });
+                      }
                     }}
                   />
                   <label
-                    for="europe"
+                    htmlFor="europe"
                     className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
                   >
                     EUROPE
                   </label>
                 </li>
+                
                 <li className="flex items-center">
                   <input
-                    id="us"
+                    id="usa"
                     type="checkbox"
                     value=""
                     className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
                     onChange={() => {
-                      setFilter({
-                        ...filter,
-                        tagRegion: [...filter.tagRegion, "USA"],
-                      });
+                      if (filter.tagRegion.includes("USA")) {
+                        setFilter({
+                          ...filter,
+                          tagRegion: filter.tagRegion.filter(
+                            (region) => region !== "USA"
+                          ),
+                        });
+                      } else {
+                        setFilter({
+                          ...filter,
+                          tagRegion: [...filter.tagRegion, "USA"],
+                        });
+                      }
                     }}
                   />
                   <label
-                    for="usa"
+                    htmlFor="usa"
                     className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
                   >
                     USA
                   </label>
                 </li>
+                
               </ul>
               <h6 className="mb-3 text-sm font-medium text-gray-900 dark:text-white mt-5">
                 Show
@@ -154,22 +184,30 @@ export default function Panel({
                 aria-labelledby="filterDropdownButton"
               >
                 {showList.map((show) => (
-                  // eslint-disable-next-line react/jsx-key
-                  <li className="flex items-center">
+                  <li className="flex items-center" key={show}>
                     <input
                       id={show}
                       type="checkbox"
                       value=""
                       className="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
                       onChange={() => {
-                        setFilter({
-                          ...filter,
-                          show: [...filter.show, show],
-                        });
+                        if (filter.show.includes(show)) {
+                          setFilter({
+                            ...filter,
+                            show: filter.show.filter(
+                              (selectedShow) => selectedShow !== show
+                            ),
+                          });
+                        } else {
+                          setFilter({
+                            ...filter,
+                            show: [...filter.show, show],
+                          });
+                        }
                       }}
                     />
                     <label
-                      for={show}
+                      htmlFor={show}
                       className="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100"
                     >
                       {show}

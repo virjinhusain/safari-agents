@@ -66,8 +66,9 @@ export default function Home() {
   };
 
   useEffect(() => {
+    console.log("Fetching data...", filter);
     fetchData();
-  }, [filter, searchQuery, currentPage, sortOrder, fetchData]);
+  }, [filter]);
 
   const filterData = () => {
     const filteredData = data.filter((item) => {
