@@ -74,7 +74,7 @@ function TableCell({ children, data, setData, setOpenUpdateModal }) {
   return (
     <td className="px-6 py-2 whitespace-nowrap">
       <div
-        className="text-sm text-gray-900"
+        className="text-lg text-gray-900"
         onClick={() => {
           setData(data);
           setOpenUpdateModal(true);

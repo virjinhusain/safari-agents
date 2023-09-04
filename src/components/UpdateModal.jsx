@@ -277,7 +277,7 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
                 <textarea
                   id="publishedResort"
                   rows="4"
-                  className="block p-2.5 h-64 w-full text-md text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  className="block p-2.5 h-64 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   placeholder=""
                   value={updatedData.publishedResort}
                   onChange={(e) =>
@@ -298,7 +298,7 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
                 <textarea
                   id="salesBySafari"
                   rows="4"
-                  className="block p-2.5 h-64 w-full text-md text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  className="block p-2.5 h-64 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   placeholder=""
                   value={updatedData.salesBySafari}
                   onChange={(e) =>
@@ -319,7 +319,7 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
                 <textarea
                   id="safariProduct"
                   rows="4"
-                  className="block p-2.5 h-64 w-full text-md text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  className="block p-2.5 h-64 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   placeholder=""
                   value={updatedData.safariProduct}
                   onChange={(e) =>
@@ -340,7 +340,7 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
                 <textarea
                   id="notes"
                   rows="4"
-                  className="block p-2.5 h-64 w-full text-md text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  className="block p-2.5 h-64 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   placeholder="Add notes"
                   value={updatedData.notes}
                   onChange={(e) =>
@@ -361,7 +361,7 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
                 <textarea
                   id="follow-up"
                   rows="4"
-                  className="block p-2.5 h-64 w-full text-md text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  className="block p-2.5 h-64 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   placeholder=""
                   value={updatedData.followUp}
                   onChange={(e) =>
@@ -379,7 +379,7 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
                 type="submit"
                 className="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 mt-5"
               >
-                Update product
+                Update Agent
               </button>
             </div>
           </form>
