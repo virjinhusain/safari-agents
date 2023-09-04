@@ -7,14 +7,13 @@ export default function TableContainer({
   setOpenDeleteModal,
 }) {
   return (
-    <div className="overflow-x-auto overflow-y-auto">
+    <div className="overflow-x-auto">
       <table className="min-w-full divide-y divide-gray-200">
         <thead className="bg-gray-50">
           <tr>
             <TableHeaderCell>ID Agents</TableHeaderCell>
             <TableHeaderCell>Tag Region</TableHeaderCell>
             <TableHeaderCell>Travel Agents</TableHeaderCell>
-            <TableHeaderCell>Show</TableHeaderCell>
             <ActionsTableHeaderCell />
           </tr>
         </thead>
@@ -42,13 +41,6 @@ export default function TableContainer({
               >
                 {row.travelAgent}
               </TableCell>
-              <TableCell
-                data={row}
-                setData={setData}
-                setOpenUpdateModal={setOpenUpdateModal}
-              >
-                {row.show}
-              </TableCell>
               <ActionsTableCell
                 data={row}
                 setData={setData}
@@ -67,7 +59,7 @@ function TableHeaderCell({ children }) {
   return (
     <th
       scope="col"
-      className="px-5 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+      className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
     >
       {children}
     </th>
@@ -80,9 +72,9 @@ function TableRow({ children }) {
 
 function TableCell({ children, data, setData, setOpenUpdateModal }) {
   return (
-    <td className="px-5 py-0 whitespace-nowrap">
+    <td className="px-6 py-2 whitespace-nowrap">
       <div
-        className="text-sm text-gray-900"
+        className="text-lg text-gray-900"
         onClick={() => {
           setData(data);
           setOpenUpdateModal(true);
@@ -123,7 +115,7 @@ function ActionsTableHeaderCell() {
       scope="col"
       className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
     >
-      Action
+      Actions
     </th>
   );
 }
