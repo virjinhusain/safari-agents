@@ -395,7 +395,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
                   htmlFor="links"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
-                  Link
+                  Safari Product Link
                 </label>
                 {linksPlaceholders.map((placeholder, index) => (
                   <input
@@ -427,6 +427,23 @@ export default function CreateModal({ isOpen, setIsOpen }) {
               </div>
             </div>
             <div className="space-y-2">
+              <div className="sm:col-span-2">
+                <label
+                  htmlFor="safariProduct"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                </label>
+                <textarea
+                  id="safariProduct"
+                  rows="4"
+                  className="block p-2.5 h-64 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  placeholder=""
+                  value={formData.safariProduct}
+                  onChange={(e) =>
+                    setFormData({ ...formData, safariProduct: e.target.value })
+                  }
+                ></textarea>
+              </div>
               <div className="sm:col-span-2">
                 <label
                   htmlFor="publishedResort"
@@ -464,24 +481,6 @@ export default function CreateModal({ isOpen, setIsOpen }) {
                   onChange={(e) => {
                     setFormData({ ...formData, salesBySafari: e.target.value });
                   }}
-                ></textarea>
-              </div>
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="safariProduct"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Safari product on their website
-                </label>
-                <textarea
-                  id="safariProduct"
-                  rows="4"
-                  className="block p-2.5 h-64 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  placeholder=""
-                  value={formData.safariProduct}
-                  onChange={(e) =>
-                    setFormData({ ...formData, safariProduct: e.target.value })
-                  }
                 ></textarea>
               </div>
               <div className="sm:col-span-2">

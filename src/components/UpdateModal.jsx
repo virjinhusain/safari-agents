@@ -195,7 +195,13 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
                     htmlFor={field}
                     className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                   >
-                    {field.charAt(0).toUpperCase() + field.slice(1)}
+                    {field === "link"
+                      ? "Safari Product Link"
+                      : field === "phoneNumber"
+                      ? "Phone Number"
+                      : field === "contactPerson"
+                      ? "Contact Person"
+                      : field.charAt(0).toUpperCase() + field.slice(1)}
                   </label>
                   {updatedData[field].length > 0 ? (
                     updatedData[field].map((placeholder, index) => (
@@ -258,8 +264,25 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
                   )}
                 </div>
               ))}
-
-              {/* ... rest of the code ... */}
+              <div className="sm:col-span-2">
+                <label
+                  htmlFor="safariProduct"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                ></label>
+                <textarea
+                  id="safariProduct"
+                  rows="4"
+                  className="block p-2.5 h-64 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  placeholder=""
+                  value={updatedData.safariProduct}
+                  onChange={(e) =>
+                    setUpdatedData({
+                      ...updatedData,
+                      safariProduct: e.target.value,
+                    })
+                  }
+                ></textarea>
+              </div>
               <div className="sm:col-span-2">
                 <label
                   htmlFor="publishedResort"
@@ -302,27 +325,7 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
                   }
                 ></textarea>
               </div>
-              <div className="sm:col-span-2">
-                <label
-                  htmlFor="safariProduct"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                  Safari product on their website
-                </label>
-                <textarea
-                  id="safariProduct"
-                  rows="4"
-                  className="block p-2.5 h-64 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  placeholder=""
-                  value={updatedData.safariProduct}
-                  onChange={(e) =>
-                    setUpdatedData({
-                      ...updatedData,
-                      safariProduct: e.target.value,
-                    })
-                  }
-                ></textarea>
-              </div>
+
               <div className="sm:col-span-2">
                 <label
                   htmlFor="notes"
