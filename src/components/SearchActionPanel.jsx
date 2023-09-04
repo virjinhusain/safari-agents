@@ -147,7 +147,7 @@ export default function Panel({
                 </li>
               </ul>
               <h6 className="mb-3 text-sm font-medium text-gray-900 dark:text-white mt-5">
-                Show - under development
+                Show
               </h6>
               <ul
                 className="space-y-2 text-sm"

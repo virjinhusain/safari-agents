@@ -9,14 +9,16 @@ import ReadModal from "@/components/ReadModal";
 import UpdateModal from "@/components/UpdateModal";
 import DeleteModal from "@/components/DeleteModal";
 
-// Extracted constant for the API URL
-const API_URL = "https://saf-api-rcesi3nzea-as.a.run.app/agent";
+const API_URL = "https://saf-api-rcesi3nzea-as.a.run.app";
 
 export default function Home() {
-  const [openCreateModal, setOpenCreateModal] = useState(false);
-  const [openReadModal, setOpenReadModal] = useState(false);
-  const [openUpdateModal, setOpenUpdateModal] = useState(false);
-  const [openDeleteModal, setOpenDeleteModal] = useState(false);
+  const [modals, setModals] = useState({
+    openCreateModal: false,
+    openReadModal: false,
+    openUpdateModal: false,
+    openDeleteModal: false,
+  });
+
   const [selectedData, setSelectedData] = useState(null);
   const [data, setData] = useState([]);
   const [filter, setFilter] = useState({
@@ -28,64 +30,59 @@ export default function Home() {
   const [sortOrder, setSortOrder] = useState("AZ");
   const itemsPerPage = 10;
 
-  // Extracted function to fetch data
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const fetchData = async () => {
     try {
-      const response = await axios.post(
-        "https://saf-api-rcesi3nzea-as.a.run.app/graphql",
-        {
-          query: `query {
- Agents(show: "${filter.show}") {
-    tagRegion
-    travelAgent
-    contactPerson
-    email
-    phoneNumber
-    show
-    website
-    link
-    publishedResort
-    salesBySafari
-    safariProduct
-    sales2022
-    sales2023
-    notes
-    followUp
-  }
-}
-`,
-        }
-      );
-      let items = response.data.data.Agents;
+      const response = await axios.post(`${API_URL}/graphql`, {
+        query: `query {
+          Agents(show: "${filter.show}") {
+            _id
+            tagRegion
+            travelAgent
+            contactPerson
+            email
+            phoneNumber
+            show
+            website
+            link
+            publishedResort
+            salesBySafari
+            safariProduct
+            sales2022
+            sales2023
+            notes
+            followUp
+          }
+        }`,
+      });
+      const items = response.data.data.Agents.map((item, index) => ({
+        ...item,
+        number: index + 1,
+      }));
       setData(items);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
   useEffect(() => {
     fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filter, searchQuery, currentPage, sortOrder, fetchData]);
 
   const filterData = () => {
-    const filteredBySearch = data.filter((item) =>
-      item.travelAgent.toLowerCase().includes(searchQuery.toLowerCase())
-    );
+    const filteredData = data.filter((item) => {
+      const isSearchMatch =
+        item.travelAgent.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        searchQuery.trim() === ""; // Include all items if search query is empty
 
-    const filteredByFilters = filteredBySearch.filter((item) => {
-      if (filter.tagRegion.length === 0 && filter.show.length === 0) {
-        return true;
-      }
-
-      const tagRegionFilterPassed =
+      const isTagRegionMatch =
         filter.tagRegion.length === 0 ||
         filter.tagRegion.includes(item.tagRegion);
 
-      return tagRegionFilterPassed;
+      return isSearchMatch && isTagRegionMatch;
     });
-    return filteredByFilters;
+
+    return filteredData;
   };
 
   const filteredData = filterData();
@@ -112,32 +109,26 @@ export default function Home() {
     setData(sortedData);
   };
 
-  const sortAZ = () => {
-    setSortOrder("AZ");
-    sortData("AZ");
-  };
-
-  const sortZA = () => {
-    setSortOrder("ZA");
-    sortData("ZA");
+  const toggleModal = (modalName) => {
+    setModals({ ...modals, [modalName]: !modals[modalName] });
   };
 
   return (
     <section className="bg-gray-50 dark:bg-gray-900 h-full p-3 sm:p-5 antialiased">
       <div className="space-y-1">
         <Panel
-          setCreateAgentModal={setOpenCreateModal}
+          setCreateAgentModal={() => toggleModal("openCreateModal")}
           onSearchChange={handleSearchChange}
           setFilter={setFilter}
           filter={filter}
-          onSortAZ={sortAZ}
-          onSortZA={sortZA}
+          onSortAZ={() => sortData("AZ")}
+          onSortZA={() => sortData("ZA")}
         />
         <TableContainer
           data={currentItems}
           setData={setSelectedData}
-          setOpenUpdateModal={setOpenUpdateModal}
-          setOpenDeleteModal={setOpenDeleteModal}
+          setOpenUpdateModal={() => toggleModal("openUpdateModal")}
+          setOpenDeleteModal={() => toggleModal("openDeleteModal")}
         />
         <Navigation
           length={filteredData.length}
@@ -146,21 +137,24 @@ export default function Home() {
           onPageChange={handlePageChange}
         />
       </div>
-      <CreateModal isOpen={openCreateModal} setIsOpen={setOpenCreateModal} />
+      <CreateModal
+        isOpen={modals.openCreateModal}
+        setIsOpen={() => toggleModal("openCreateModal")}
+      />
       <ReadModal
         data={selectedData}
-        isOpen={openReadModal}
-        setIsOpen={setOpenReadModal}
+        isOpen={modals.openReadModal}
+        setIsOpen={() => toggleModal("openReadModal")}
       />
       <UpdateModal
         data={selectedData}
-        isOpen={openUpdateModal}
-        setIsOpen={setOpenUpdateModal}
+        isOpen={modals.openUpdateModal}
+        setIsOpen={() => toggleModal("openUpdateModal")}
       />
       <DeleteModal
         data={selectedData}
-        isOpen={openDeleteModal}
-        setIsOpen={setOpenDeleteModal}
+        isOpen={modals.openDeleteModal}
+        setIsOpen={() => toggleModal("openDeleteModal")}
       />
     </section>
   );

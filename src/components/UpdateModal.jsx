@@ -208,6 +208,19 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
                           required=""
                           onChange={(e) => handleInputChange(e, field, index)}
                         />
+                        {field === "email" ||
+                        field === "website" ||
+                        field === "link" ? (
+                          <button
+                            type="button"
+                            className="text-blue-600 hover:text-blue-700 focus:outline-none"
+                            onClick={() => {
+                              console.log("delete");
+                            }}
+                          >
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                          </button>
+                        ) : null}
                         {index === updatedData[field].length - 1 && (
                           <button
                             type="button"
