@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Navigation({
   length,
   itemsPerPage,
@@ -33,6 +35,9 @@ export default function Navigation({
             {length}
           </span>
         </span>
+        <div>
+          <Link href="/report" className="text-xs text-blue-500">Click here to see sales report</Link>
+        </div>
         <ul className="inline-flex items-stretch -space-x-px">
           <li>
             <button
