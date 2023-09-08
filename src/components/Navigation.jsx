@@ -21,7 +21,7 @@ export default function Navigation({
       aria-label="Table navigation"
     >
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 sm:space-y-0 p-1">
-        <span className="text-xs sm:text-sm font-normal text-gray-500 dark:text-gray-400">
+        <span className="text-md sm:text-md font-normal text-gray-500 dark:text-gray-400">
           Showing{" "}
           <span className="font-semibold text-gray-900 dark:text-white">
             {currentPage === 1 ? 1 : (currentPage - 1) * itemsPerPage + 1}
@@ -36,7 +36,7 @@ export default function Navigation({
           </span>
         </span>
         <div>
-          <Link href="/report" className="text-xs text-blue-500">Click here to see sales report</Link>
+          <Link href="/report" className="text-md text-blue-500">Click here to see sales report</Link>
         </div>
         <ul className="inline-flex items-stretch -space-x-px">
           <li>

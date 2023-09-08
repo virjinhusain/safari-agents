@@ -117,6 +117,7 @@ export default function Home() {
   return (
     <section className="bg-gray-50 dark:bg-gray-900 h-full p-3 sm:p-5 antialiased">
       <div className="space-y-1">
+      <div className="max-h-[500px] overflow-y-auto">
         <Panel
           setCreateAgentModal={() => toggleModal("openCreateModal")}
           onSearchChange={handleSearchChange}
@@ -157,6 +158,7 @@ export default function Home() {
         isOpen={modals.openDeleteModal}
         setIsOpen={() => toggleModal("openDeleteModal")}
       />
+      </div>
     </section>
   );
 }

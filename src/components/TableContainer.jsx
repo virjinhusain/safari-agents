@@ -72,7 +72,7 @@ function TableRow({ children }) {
 
 function TableCell({ children, data, setData, setOpenUpdateModal }) {
   return (
-    <td className="px-6 py-2 whitespace-nowrap">
+    <td className="px-6 py-1 whitespace-nowrap">
       <div
         className="text-lg text-gray-900"
         onClick={() => {
@@ -92,8 +92,7 @@ function ActionsTableCell({
   setOpenDeleteModal,
 }) {
   return (
-    <td className="px-4 py-2 whitespace-nowrap text-center text-sm font-medium">
-     
+    <td className="px-4 py-2 whitespace-nowrap text-center text-md font-medium">
       <button
         type="button"
         className="text-red-600 hover:text-red-900 ml-2"
