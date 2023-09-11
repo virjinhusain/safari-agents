@@ -7,7 +7,7 @@ export default function TableContainer({
   setOpenDeleteModal,
 }) {
   return (
-    <div className="overflow-x-auto">
+    <div className="overflow-x-auto h-screen">
       <table className="min-w-full divide-y divide-gray-200">
         <thead className="bg-gray-50">
           <tr>
@@ -72,7 +72,7 @@ function TableRow({ children }) {
 
 function TableCell({ children, data, setData, setOpenUpdateModal }) {
   return (
-    <td className="px-6 py-1 whitespace-nowrap">
+    <td className="px-6 py-2 whitespace-nowrap">
       <div
         className="text-lg text-gray-900"
         onClick={() => {
