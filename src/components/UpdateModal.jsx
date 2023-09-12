@@ -22,6 +22,7 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
     followUp: "",
   });
   const [id, setId] = useState("");
+  const [showNotification, setShowNotification] = useState(false);
 
   useEffect(() => {
     if (data) {
@@ -36,6 +37,14 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
       .patch(`https://saf-api-rcesi3nzea-as.a.run.app/agent/${id}`, updatedData)
       .then((res) => {
         setIsOpen(false);
+         // Tampilkan notifikasi
+         setShowNotification(true);
+         setTimeout(() => {
+           setShowNotification(false);
+         }, 2000); // Sembunyikan notifikasi setelah 2 detik
+       })
+       .catch((error) => {
+         // Handle kesalahan
       });
   };
 
@@ -78,7 +87,16 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
             <button
               type="button"
               className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
-              onClick={() => setIsOpen(false)}
+              onClick={() => {
+                if (
+                  JSON.stringify(updatedData) !== JSON.stringify(data) &&
+                  window.confirm("Are you sure you want to exit without saving your changes?")
+                ) { 
+                setIsOpen(false);
+              } else {
+                setIsOpen(false);
+              }
+            }}
             >
               <i className="fa-solid fa-xmark"></i>
               <span className="sr-only">Close modal</span>
@@ -379,6 +397,13 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
               </button>
             </div>
           </form>
+           {/* Notifikasi sederhana */}
+           {showNotification && (
+            <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mt-4" role="alert">
+              <strong className="font-bold">Success!</strong>
+              <span className="block sm:inline">Updated successfully.</span>
+            </div>
+          )}
         </div>
       </div>
     </div>
