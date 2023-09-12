@@ -23,6 +23,7 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
   });
   const [id, setId] = useState("");
   const [showNotification, setShowNotification] = useState(false);
+  const [isNotificationOpen, setIsNotificationOpen] = useState(false); 
 
   useEffect(() => {
     if (data) {
@@ -41,6 +42,7 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
          setShowNotification(true);
          setTimeout(() => {
            setShowNotification(false);
+           setIsNotificationOpen(false);
          }, 2000); // Sembunyikan notifikasi setelah 2 detik
        })
        .catch((error) => {
@@ -90,13 +92,20 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
               onClick={() => {
                 if (
                   JSON.stringify(updatedData) !== JSON.stringify(data) &&
-                  window.confirm("Are you sure you want to exit without saving your changes?")
-                ) { 
-                setIsOpen(false);
-              } else {
-                setIsOpen(false);
-              }
-            }}
+                  !showNotification
+                ) {
+                  // Jika notifikasi tidak muncul, tampilkan konfirmasi penutupan modal
+                  if (
+                    window.confirm(
+                      "Are you sure you want to exit without saving your changes?"
+                    )
+                  ) {
+                    setIsOpen(false);
+                  }
+                } else {
+                  setIsOpen(false);
+                }
+              }}
             >
               <i className="fa-solid fa-xmark"></i>
               <span className="sr-only">Close modal</span>
@@ -402,6 +411,15 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
             <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mt-4" role="alert">
               <strong className="font-bold">Success!</strong>
               <span className="block sm:inline">Updated successfully.</span>
+              {/* Tombol "Cancel" pada notifikasi */}
+              <button
+                type="button"
+                onClick={() => setIsNotificationOpen(false)}
+                className="absolute top-0 bottom-0 right-0 px-3 py-2 text-gray-500 hover:text-gray-700 focus:outline-none"
+              >
+                <i className="fa-solid fa-xmark"></i>
+                <span className="sr-only">Close notification</span>
+              </button>
             </div>
           )}
         </div>
