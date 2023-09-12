@@ -120,13 +120,13 @@ export default function CreateModal({ isOpen, setIsOpen }) {
               <div>
                 <label
                   htmlFor="tag-region"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-lg font-medium text-gray-900 dark:text-white"
                 >
                   Tag Region
                 </label>
                 <select
                   id="tag-region"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   value={formData.tagRegion}
                   onChange={(e) =>
                     setFormData({
@@ -144,7 +144,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
               <div>
                 <label
                   htmlFor="travel-agent"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-lg font-medium text-gray-900 dark:text-white"
                 >
                   Travel Agent
                 </label>
@@ -152,7 +152,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
                   type="text"
                   name="travel-agent"
                   id="travel-agent"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   placeholder="Type travel agent"
                   required=""
                   value={formData.travelAgent}
@@ -168,7 +168,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
               <div>
                 <label
                   htmlFor="2022"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-lg font-medium text-gray-900 dark:text-white"
                 >
                   Gross sale 2022
                 </label>
@@ -176,7 +176,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
                   type="text"
                   name="2022"
                   id="2022"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   placeholder=""
                   required=""
                   value={formData.sales2022}
@@ -191,7 +191,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
               <div>
                 <label
                   htmlFor="2023"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-lg font-medium text-gray-900 dark:text-white"
                 >
                   Gross sale 2023
                 </label>
@@ -199,7 +199,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
                   type="text"
                   name="2023"
                   id="2023"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   placeholder=""
                   required=""
                   value={formData.sales2023}
@@ -216,7 +216,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
               <div>
                 <label
                   htmlFor="show"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-lg font-medium text-gray-900 dark:text-white"
                 >
                   Show
                 </label>
@@ -226,7 +226,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
                     type="text"
                     name={`show-${index}`}
                     id={`show-${index}`}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder={placeholder}
                     required=""
                     value={formData.show[index] || ""} // Set value from formData
@@ -251,7 +251,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
               <div className="space-y-1">
                 <label
                   htmlFor="contact-person"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-lg font-medium text-gray-900 dark:text-white"
                 >
                   Contact Person
                 </label>
@@ -261,7 +261,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
                     type="text"
                     name={`contact-person-${index}`}
                     id={`contact-person-${index}`}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder={placeholder}
                     required=""
                     value={formData.contactPerson[index] || ""} // Set value from formData
@@ -286,7 +286,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
               <div className="space-y-1">
                 <label
                   htmlFor="phone-number"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-lg font-medium text-gray-900 dark:text-white"
                 >
                   Phone Number
                 </label>
@@ -296,7 +296,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
                     type="text"
                     name={`phone-number-${index}`}
                     id={`phone-number-${index}`}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder={placeholder}
                     required=""
                     value={formData.phoneNumber[index] || ""} // Set value from formData
@@ -322,7 +322,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
               <div className="space-y-1">
                 <label
                   htmlFor="email"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-lg font-medium text-gray-900 dark:text-white"
                 >
                   Email
                 </label>
@@ -332,7 +332,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
                     type="text"
                     name={`email-${index}`}
                     id={`email-${index}`}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder={placeholder}
                     required=""
                     value={formData.email[index] || ""} // Set value from formData
@@ -357,7 +357,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
               <div className="space-y-1">
                 <label
                   htmlFor="website"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-lg font-medium text-gray-900 dark:text-white"
                 >
                   Website
                 </label>
@@ -367,7 +367,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
                     type="text"
                     name={`website-${index}`}
                     id={`website-${index}`}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder={placeholder}
                     required=""
                     value={formData.website[index] || ""} // Set value from formData
@@ -393,7 +393,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
               <div className="space-y-1">
                 <label
                   htmlFor="links"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-lg font-medium text-gray-900 dark:text-white"
                 >
                   Safari Product Link
                 </label>
@@ -403,7 +403,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
                     type="text"
                     name={`link-${index}`}
                     id={`link-${index}`}
-                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    className="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder={placeholder}
                     required=""
                     value={formData.link[index] || ""} // Set value from formData
@@ -436,7 +436,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
                 <textarea
                   id="safariProduct"
                   rows="4"
-                  className="block p-2.5 h-64 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  className="block p-2.5 h-64 w-full text-lg text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   placeholder=""
                   value={formData.safariProduct}
                   onChange={(e) =>
@@ -447,14 +447,14 @@ export default function CreateModal({ isOpen, setIsOpen }) {
               <div className="sm:col-span-2">
                 <label
                   htmlFor="publishedResort"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-lg font-medium text-gray-900 dark:text-white"
                 >
                   Resort published on their website
                 </label>
                 <textarea
                   id="publishedResort"
                   rows="4"
-                  className="block p-2.5 h-64 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  className="block p-2.5 h-64 w-full text-lg text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   placeholder=""
                   value={formData.publishedResort}
                   onChange={(e) => {
@@ -468,14 +468,14 @@ export default function CreateModal({ isOpen, setIsOpen }) {
               <div className="sm:col-span-2">
                 <label
                   htmlFor="salesBySafari"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-lg font-medium text-gray-900 dark:text-white"
                 >
                   Sales by Safari
                 </label>
                 <textarea
                   id="salesBySafari"
                   rows="4"
-                  className="block p-2.5 h-64 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  className="block p-2.5 h-64 w-full text-lg text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   placeholder=""
                   value={formData.salesBySafari}
                   onChange={(e) => {
@@ -486,14 +486,14 @@ export default function CreateModal({ isOpen, setIsOpen }) {
               <div className="sm:col-span-2">
                 <label
                   htmlFor="notes"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-lg font-medium text-gray-900 dark:text-white"
                 >
                   Notes
                 </label>
                 <textarea
                   id="notes"
                   rows="4"
-                  className="block p-2.5 h-64 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  className="block p-2.5 h-64 w-full text-lg text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   value={formData.notes}
                   onChange={(e) =>
                     setFormData({ ...formData, notes: e.target.value })
@@ -503,14 +503,14 @@ export default function CreateModal({ isOpen, setIsOpen }) {
               <div>
                 <label
                   htmlFor="follow-up"
-                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                  className="block mb-2 text-lg font-medium text-gray-900 dark:text-white"
                 >
                   Follow up
                 </label>
                 <textarea
                   id="follow-up"
                   rows="4"
-                  className="block p-2.5 h-64 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  className="block p-2.5 h-64 w-full text-lg text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   placeholder=""
                   value={formData.followUp}
                   onChange={(e) =>
@@ -522,7 +522,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
 
             <button
               type="submit"
-              className="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 mt-5"
+              className="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-md px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800 mt-5"
             >
               Add new agent
             </button>

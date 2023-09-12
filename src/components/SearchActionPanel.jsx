@@ -46,7 +46,7 @@ export default function Panel({
               <input
                 type="text"
                 id="simple-search"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-xs rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                className="bg-gray-50 border border-gray-300 text-gray-900 text-md rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                 placeholder="Search Travel Agent"
                 required=""
                 value={searchQuery} // Bind the input value to the searchQuery state
@@ -59,7 +59,7 @@ export default function Panel({
           <button
             type="button"
             onClick={() => setCreateAgentModal(true)}
-            className="flex items-center justify-center text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-xs px-4 py-2 gap-2"
+            className="flex items-center justify-center text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-md px-4 py-2 gap-2"
           >
             <i className="fa-solid fa-plus"></i>
             Add Agents
@@ -68,7 +68,7 @@ export default function Panel({
             type="button"
             id="filterButton"
             onClick={toggleFilterDropdown} // Toggle the filter dropdown
-            className="flex items-center justify-center text-gray-500 bg-gray-300 hover:bg-gray-400 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-xs px-4 py-2 gap-2"
+            className="flex items-center justify-center text-gray-500 bg-gray-300 hover:bg-gray-400 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-md px-4 py-2 gap-2"
           >
             <i className="fa-solid fa-filter"></i>
             Filter
@@ -220,14 +220,14 @@ export default function Panel({
           <button
             type="button"
             onClick={onSortAZ}
-            className="flex items-center justify-center text-gray-500 bg-gray-300 hover:bg-gray-400 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-xs px-4 py-2 gap-2"
+            className="flex items-center justify-center text-gray-500 bg-gray-300 hover:bg-gray-400 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-md px-4 py-2 gap-2"
           >
             <i className="fa-solid fa-sort-alpha-down"></i>
           </button>
           <button
             type="button"
             onClick={onSortZA}
-            className="flex items-center justify-center text-gray-500 bg-gray-300 hover:bg-gray-400 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-xs px-4 py-2 gap-2"
+            className="flex items-center justify-center text-gray-500 bg-gray-300 hover:bg-gray-400 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-md px-4 py-2 gap-2"
           >
             <i className="fa-solid fa-sort-alpha-down-alt"></i>
           </button>
