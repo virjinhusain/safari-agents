@@ -79,6 +79,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
     safariProduct: "",
     notes: "",
     followUp: "",
+    actionShowResults:"",
   });
 
   const handleSubmit = (event) => {
@@ -515,6 +516,24 @@ export default function CreateModal({ isOpen, setIsOpen }) {
                   value={formData.followUp}
                   onChange={(e) =>
                     setFormData({ ...formData, followUp: e.target.value })
+                  }
+                ></textarea>
+              </div>
+              <div>
+                <label
+                  htmlFor="follow-up"
+                  className="block mb-2 text-lg font-medium text-gray-900 dark:text-white"
+                >
+                  Action Show Results
+                </label>
+                <textarea
+                  id="actionShowResults"
+                  rows="4"
+                  className="block p-2.5 h-64 w-full text-lg text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  placeholder=""
+                  value={formData.actionShowResults}
+                  onChange={(e) =>
+                    setFormData({ ...formData, actionShowResults: e.target.value })
                   }
                 ></textarea>
               </div>

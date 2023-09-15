@@ -20,6 +20,7 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
     safariProduct: "",
     notes: "",
     followUp: "",
+    actionShowResults:"",
   });
   const [id, setId] = useState("");
   const [showNotification, setShowNotification] = useState(false);
@@ -391,6 +392,27 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
                     setUpdatedData({
                       ...updatedData,
                       followUp: e.target.value,
+                    })
+                  }
+                ></textarea>
+              </div>
+              <div className="sm:col-span-2">
+                <label
+                  htmlFor="actionShowResults"
+                  className="block mb-2 text-lg font-medium text-gray-900 dark:text-white"
+                >
+                  Action Show Results
+                </label>
+                <textarea
+                  id="actionShowResults"
+                  rows="4"
+                  className="block p-2.5 h-64 w-full text-lg text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  placeholder=""
+                  value={updatedData.actionShowResults}
+                  onChange={(e) =>
+                    setUpdatedData({
+                      ...updatedData,
+                      actionShowResults: e.target.value,
                     })
                   }
                 ></textarea>
