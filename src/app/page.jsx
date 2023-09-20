@@ -67,7 +67,7 @@ export default function Home() {
 
   useEffect(() => {
     fetchData();
-  }, [filter]);
+  }, [filter, modals]);
 
   const filterData = () => {
     const filteredData = data.filter((item) => {

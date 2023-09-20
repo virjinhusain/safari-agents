@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 
 export default function DeleteModal({ isOpen, setIsOpen, data }) {
   const [id, setId] = useState("");
+  const [password, setPassword] = useState("");
 
   useEffect(() => {
     if (data) {
@@ -12,12 +13,18 @@ export default function DeleteModal({ isOpen, setIsOpen, data }) {
   }, [data]);
 
   const deleteAgent = () => {
-    axios
+    if (password === 'safari176!') {
+      axios
       .delete(`https://saf-api-rcesi3nzea-as.a.run.app/agent/${id}`)
       .then((res) => {
         setIsOpen(false);
       });
+    } else {
+      window.confirm('Wrong password')
+    }
+
   };
+  console.log(password);
   return (
     <div
       id="deleteModal"
@@ -66,6 +73,15 @@ export default function DeleteModal({ isOpen, setIsOpen, data }) {
           <p className="mb-4 text-gray-500 dark:text-gray-300">
             Are you sure you want to delete this item?
           </p>
+          <div>
+            <input
+              type="password"
+              className="w-full border mb-2"
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+            />
+          </div>
           <div className="flex justify-center items-center space-x-4">
             <button
               data-modal-toggle="deleteModal"
