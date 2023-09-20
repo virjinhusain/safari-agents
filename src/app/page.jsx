@@ -52,6 +52,7 @@ export default function Home() {
             sales2023
             notes
             followUp
+            actionShowResults
           }
         }`,
       });
