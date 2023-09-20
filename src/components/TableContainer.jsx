@@ -14,6 +14,7 @@ export default function TableContainer({
             <TableHeaderCell>ID Agents</TableHeaderCell>
             <TableHeaderCell>Tag Region</TableHeaderCell>
             <TableHeaderCell>Travel Agents</TableHeaderCell>
+            <TableHeaderCell>Last update at</TableHeaderCell>
             <ActionsTableHeaderCell />
           </tr>
         </thead>
@@ -40,6 +41,14 @@ export default function TableContainer({
                 setOpenUpdateModal={setOpenUpdateModal}
               >
                 {row.travelAgent}
+              </TableCell>
+              <TableCell
+                data={row}
+                setData={setData}
+                setOpenUpdateModal={setOpenUpdateModal}
+              >
+                {/* {row.updatedAt} */}
+                {timeAgo(row.updatedAt)}
               </TableCell>
               <ActionsTableCell
                 data={row}
@@ -86,11 +95,7 @@ function TableCell({ children, data, setData, setOpenUpdateModal }) {
   );
 }
 
-function ActionsTableCell({
-  data,
-  setData,
-  setOpenDeleteModal,
-}) {
+function ActionsTableCell({ data, setData, setOpenDeleteModal }) {
   return (
     <td className="px-4 py-2 whitespace-nowrap text-center text-md font-medium">
       <button
@@ -107,7 +112,6 @@ function ActionsTableCell({
   );
 }
 
-
 function ActionsTableHeaderCell() {
   return (
     <th
@@ -117,4 +121,27 @@ function ActionsTableHeaderCell() {
       Actions
     </th>
   );
+}
+function timeAgo(timestamp) {
+  const currentTime = new Date().getTime();
+  const timeDifference = currentTime - timestamp;
+
+  // Define time intervals in milliseconds
+  const minute = 60 * 1000;
+  const hour = 60 * minute;
+  const day = 24 * hour;
+
+  if (timeDifference < minute) {
+    const secondsAgo = Math.floor(timeDifference / 1000);
+    return secondsAgo + (secondsAgo === 1 ? " second ago" : " seconds ago");
+  } else if (timeDifference < hour) {
+    const minutesAgo = Math.floor(timeDifference / minute);
+    return minutesAgo + (minutesAgo === 1 ? " minute ago" : " minutes ago");
+  } else if (timeDifference < day) {
+    const hoursAgo = Math.floor(timeDifference / hour);
+    return hoursAgo + (hoursAgo === 1 ? " hour ago" : " hours ago");
+  } else {
+    const daysAgo = Math.floor(timeDifference / day);
+    return daysAgo + (daysAgo === 1 ? " day ago" : " days ago");
+  }
 }

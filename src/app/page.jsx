@@ -53,6 +53,7 @@ export default function Home() {
             notes
             followUp
             actionShowResults
+            updatedAt 
           }
         }`,
       });
