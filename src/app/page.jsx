@@ -9,7 +9,7 @@ import ReadModal from "@/components/ReadModal";
 import UpdateModal from "@/components/UpdateModal";
 import DeleteModal from "@/components/DeleteModal";
 
-const API_URL = "https://saf-api-rcesi3nzea-as.a.run.app";
+const API_URL = "https://safari-api-man3oo2z5q-as.a.run.app";
 
 export default function Home() {
   const [modals, setModals] = useState({

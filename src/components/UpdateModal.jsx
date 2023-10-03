@@ -20,11 +20,11 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
     safariProduct: "",
     notes: "",
     followUp: "",
-    actionShowResults:"",
+    actionShowResults: "",
   });
   const [id, setId] = useState("");
   const [showNotification, setShowNotification] = useState(false);
-  const [isNotificationOpen, setIsNotificationOpen] = useState(false); 
+  const [isNotificationOpen, setIsNotificationOpen] = useState(false);
 
   useEffect(() => {
     if (data) {
@@ -36,18 +36,21 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     axios
-      .patch(`https://saf-api-rcesi3nzea-as.a.run.app/agent/${id}`, updatedData)
+      .patch(
+        `https://safari-api-man3oo2z5q-as.a.run.app/agent/${id}`,
+        updatedData
+      )
       .then((res) => {
         setIsOpen(false);
-         // Tampilkan notifikasi
-         setShowNotification(true);
-         setTimeout(() => {
-           setShowNotification(false);
-           setIsNotificationOpen(false);
-         }, 2000); // Sembunyikan notifikasi setelah 2 detik
-       })
-       .catch((error) => {
-         // Handle kesalahan
+        // Tampilkan notifikasi
+        setShowNotification(true);
+        setTimeout(() => {
+          setShowNotification(false);
+          setIsNotificationOpen(false);
+        }, 2000); // Sembunyikan notifikasi setelah 2 detik
+      })
+      .catch((error) => {
+        // Handle kesalahan
       });
   };
 
@@ -428,9 +431,12 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
               </button>
             </div>
           </form>
-           {/* Notifikasi sederhana */}
-           {showNotification && (
-            <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mt-4" role="alert">
+          {/* Notifikasi sederhana */}
+          {showNotification && (
+            <div
+              className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mt-4"
+              role="alert"
+            >
               <strong className="font-bold">Success!</strong>
               <span className="block sm:inline">Updated successfully.</span>
               {/* Tombol "Cancel" pada notifikasi */}

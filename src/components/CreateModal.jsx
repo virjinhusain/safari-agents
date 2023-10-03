@@ -79,14 +79,14 @@ export default function CreateModal({ isOpen, setIsOpen }) {
     safariProduct: "",
     notes: "",
     followUp: "",
-    actionShowResults:"",
+    actionShowResults: "",
   });
 
   const handleSubmit = (event) => {
     event.preventDefault();
     // Here you can process and send the formData to your backend or perform any necessary actions
     axios
-      .post("https://saf-api-rcesi3nzea-as.a.run.app/agent", formData)
+      .post("https://safari-api-man3oo2z5q-as.a.run.app/agent", formData)
       .then(() => {
         setIsOpen(false);
       });
@@ -432,8 +432,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
                 <label
                   htmlFor="safariProduct"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >
-                </label>
+                ></label>
                 <textarea
                   id="safariProduct"
                   rows="4"
@@ -533,7 +532,10 @@ export default function CreateModal({ isOpen, setIsOpen }) {
                   placeholder=""
                   value={formData.actionShowResults}
                   onChange={(e) =>
-                    setFormData({ ...formData, actionShowResults: e.target.value })
+                    setFormData({
+                      ...formData,
+                      actionShowResults: e.target.value,
+                    })
                   }
                 ></textarea>
               </div>
