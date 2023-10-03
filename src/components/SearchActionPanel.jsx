@@ -1,5 +1,9 @@
 "use client";
 import { useState } from "react";
+import axios from "axios";
+import * as XLSX from "xlsx";
+
+const API_URL = "https://safari-api-man3oo2z5q-as.a.run.app";
 
 export default function Panel({
   setCreateAgentModal,
@@ -11,6 +15,51 @@ export default function Panel({
 }) {
   const [searchQuery, setSearchQuery] = useState(""); // State to store the search query
   const [isFilterDropdownOpen, setIsFilterDropdownOpen] = useState(false); // State to control filter dropdown visibility
+
+  // This function fetch all data
+  const downloadExcel = async () => {
+    try {
+      const response = await axios.post(`${API_URL}/graphql`, {
+        query: `
+          {
+            Agents {
+              _id
+              tagRegion
+              travelAgent
+              contactPerson
+              email
+              phoneNumber
+              show
+              website
+              link
+              publishedResort
+              salesBySafari
+              safariProduct
+              sales2022
+              sales2023
+              notes
+              followUp
+              actionShowResults
+              updatedAt 
+            }
+          }
+        `,
+      });
+
+      if (response.status !== 200) {
+        throw new Error("Failed to fetch data");
+      }
+
+      const allData = response.data.data.Agents;
+      const worksheet = XLSX.utils.json_to_sheet(allData);
+      const workbook = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
+      XLSX.writeFile(workbook, "Data.xlsx");
+    } catch (error) {
+      console.error("Error downloading Excel:", error);
+    }
+  };
+
   // State to store the selected filters
   const showList = [
     "INTERDIVE",
@@ -114,7 +163,7 @@ export default function Panel({
                     ASIA
                   </label>
                 </li>
-                
+
                 <li className="flex items-center">
                   <input
                     id="europe"
@@ -144,7 +193,7 @@ export default function Panel({
                     EUROPE
                   </label>
                 </li>
-                
+
                 <li className="flex items-center">
                   <input
                     id="usa"
@@ -174,7 +223,6 @@ export default function Panel({
                     USA
                   </label>
                 </li>
-                
               </ul>
               <h6 className="mb-3 text-sm font-medium text-gray-900 dark:text-white mt-5">
                 Show
@@ -230,6 +278,14 @@ export default function Panel({
             className="flex items-center justify-center text-gray-500 bg-gray-300 hover:bg-gray-400 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-md px-4 py-2 gap-2"
           >
             <i className="fa-solid fa-sort-alpha-down-alt"></i>
+          </button>
+          <button
+            type="button"
+            onClick={downloadExcel}
+            className="flex items-center justify-center text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-md px-4 py-2 gap-2"
+          >
+            <i className="fa-solid fa-file-download"></i>
+            Download All Agents
           </button>
         </div>
       </div>
