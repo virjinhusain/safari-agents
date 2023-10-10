@@ -36,7 +36,7 @@ export default function Navigation({
           </span>
         </span>
         <div>
-          <Link href="/report" className="text-md text-blue-500">Click here to see sales report</Link>
+          <Link href="https://1drv.ms/x/s!Ap4yMBR9mlQMlhcY6NXaI8vx6Q2I?e=zcJGld" className="text-md text-blue-500">Click here to see sales report</Link>
         </div>
         <ul className="inline-flex items-stretch -space-x-px">
           <li>
