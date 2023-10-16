@@ -64,7 +64,7 @@ export default function Panel({
   const showList = [
     "INTERDIVE",
     "FESPO",
-    " UK GO DIVE",
+    "UK GO DIVE",
     "DEMA",
     "IT BERLIN",
     "BBTF",
