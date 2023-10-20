@@ -49,9 +49,23 @@ export default function Panel({
       if (response.status !== 200) {
         throw new Error("Failed to fetch data");
       }
-
       const allData = response.data.data.Agents;
-      const worksheet = XLSX.utils.json_to_sheet(allData);
+
+      // Convert the array data to strings
+      const dataWithFormattedArrays = allData.map((agent) => {
+        return {
+          ...agent,
+          contactPerson: agent.contactPerson.join(", "),
+          show: agent.show.join(", "),
+          email: agent.email.join(", "),
+          phoneNumber: agent.phoneNumber.join(", "),
+          website: agent.website.join(", "),
+          link: agent.link.join(", "),
+        };
+      });
+
+      // Create a worksheet
+      const worksheet = XLSX.utils.json_to_sheet(dataWithFormattedArrays);
       const workbook = XLSX.utils.book_new();
       XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
       XLSX.writeFile(workbook, "Data.xlsx");
