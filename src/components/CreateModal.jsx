@@ -171,7 +171,7 @@ export default function CreateModal({ isOpen, setIsOpen }) {
                   htmlFor="2022"
                   className="block mb-2 text-lg font-medium text-gray-900 dark:text-white"
                 >
-                  Gross sale 2022
+                  Gross sale 2024
                 </label>
                 <input
                   type="text"
