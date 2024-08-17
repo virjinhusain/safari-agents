@@ -13,7 +13,7 @@ export default function DeleteModal({ isOpen, setIsOpen, data }) {
   }, [data]);
 
   const deleteAgent = () => {
-    if (password === "safari176!") {
+    if (password === "safari173") {
       axios
         .delete(`https://safari-api-man3oo2z5q-as.a.run.app/agent/${id}`)
         .then((res) => {

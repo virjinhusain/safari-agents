@@ -1,11 +1,39 @@
 "use client";
 
+import React, { useState, useEffect } from "react";
+
 export default function TableContainer({
   data,
   setData,
   setOpenUpdateModal,
   setOpenDeleteModal,
 }) {
+   // Menginisialisasi objek kosong untuk menyimpan status checkbox
+   const [selectedAgents, setSelectedAgents] = useState({});
+
+   useEffect(() => {
+     // Memulihkan status checkbox dari local storage saat komponen dimuat
+     const storedSelectedAgents = localStorage.getItem("selectedAgents");
+     if (storedSelectedAgents) {
+       setSelectedAgents(JSON.parse(storedSelectedAgents));
+     }
+   }, []);
+ 
+   const handleCheckboxChange = (index) => {
+     setSelectedAgents((prevState) => {
+       const updatedSelectedAgents = {
+         ...prevState,
+         [index]: !prevState[index], // Mengubah status checkbox
+       };
+       // Menyimpan status checkbox ke local storage
+       localStorage.setItem(
+         "selectedAgents",
+         JSON.stringify(updatedSelectedAgents)
+       );
+       return updatedSelectedAgents;
+     });
+   };
+
   return (
     <div className="overflow-x-auto h-screen">
       <table className="min-w-full divide-y divide-gray-200">
@@ -61,6 +89,14 @@ export default function TableContainer({
         </tbody>
       </table>
     </div>
+  );
+}
+
+function CheckboxTableCell({ isChecked, onChange }) {
+  return (
+    <td className="px-6 py-2 whitespace-nowrap">
+      <input type="checkbox" checked={isChecked} onChange={onChange} />
+    </td>
   );
 }
 
