@@ -36,7 +36,7 @@ export default function Navigation({
           </span>
         </span>
         <div>
-          <Link href="https://1drv.ms/x/c/d47db68caed70d1f/ET4qSbAZL2RNhilofCeSX9sBgtlEwDQjdxfmepH_oxFSLg?e=3CDzlZ" className="text-md text-blue-500">
+          <Link href="https://www.youtube.com/?hl=id&gl=id" className="text-md text-blue-500">
             Click here to see sales report
           </Link>
         </div>
