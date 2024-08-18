@@ -36,9 +36,14 @@ export default function Navigation({
           </span>
         </span>
         <div>
-          <Link href="https://onedrive.live.com/personal/0c549a7d1430329e/_layouts/15/doc2.aspx?resid=1430329e-9a7d-2054-800c-170b00000000&cid=0c549a7d1430329e" className="text-md text-blue-500">
+          <a
+            href="https://onedrive.live.com/personal/0c549a7d1430329e/_layouts/15/doc2.aspx?resid=1430329e-9a7d-2054-800c-170b00000000&cid=0c549a7d1430329e"
+            className="text-md text-blue-500"
+            target="_blank" // Opens the link in a new tab
+            rel="noopener noreferrer" // Security best practice
+          >
             Click here to see sales report
-          </Link>
+          </a>
         </div>
         <ul className="inline-flex items-stretch -space-x-px">
           <li>
