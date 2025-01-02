@@ -170,7 +170,7 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
                   htmlFor="2022"
                   className="block mb-1 text-lg font-medium text-gray-900 dark:text-white"
                 >
-                  Gross sale 2023
+                  Gross sale 2024
                 </label>
                 <input
                   type="text"
@@ -193,7 +193,7 @@ export default function UpdateModal({ data, isOpen, setIsOpen }) {
                   htmlFor="2023"
                   className="block mb-1 text-lg font-medium text-gray-900 dark:text-white"
                 >
-                  Gross sale 2024
+                  Gross sale 2025
                 </label>
                 <input
                   type="text"
