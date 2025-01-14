@@ -140,7 +140,6 @@ export default function CreateModal({ isOpen, setIsOpen }) {
                   <option value="ASIA">ASIA</option>
                   <option value="EUROPE">EUROPE</option>
                   <option value="USA">USA</option>
-                  <option value="FRANCE">FRANCE</option>
                 </select>
               </div>
               <div>
