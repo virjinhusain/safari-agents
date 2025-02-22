@@ -68,6 +68,8 @@ export default function CreateModal({ isOpen, setIsOpen }) {
     travelAgent: "",
     sales2022: "",
     sales2023: "",
+    sales2025: "",
+    sales2026: "",
     show: [],
     contactPerson: [],
     phoneNumber: [],
@@ -208,6 +210,52 @@ export default function CreateModal({ isOpen, setIsOpen }) {
                     setFormData({
                       ...formData,
                       sales2023: e.target.value,
+                    })
+                  }
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="2025"
+                  className="block mb-2 text-lg font-medium text-gray-900 dark:text-white"
+                >
+                  Gross sale 2025
+                </label>
+                <input
+                  type="text"
+                  name="2025"
+                  id="2025"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  placeholder=""
+                  required=""
+                  value={formData.sales2025}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      sales2025: e.target.value,
+                    })
+                  }
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="2026"
+                  className="block mb-2 text-lg font-medium text-gray-900 dark:text-white"
+                >
+                  Gross sale 2026
+                </label>
+                <input
+                  type="text"
+                  name="2026"
+                  id="2026"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 text-lg rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                  placeholder=""
+                  required=""
+                  value={formData.sales2026}
+                  onChange={(e) =>
+                    setFormData({
+                      ...formData,
+                      sales2026: e.target.value,
                     })
                   }
                 />
